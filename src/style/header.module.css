@@ -11,14 +11,13 @@
   letter-spacing: 20px;
 }
 
-.wall {
-  position: absolute;
-  background-color: red;
-  z-index: 1000;
-}
-
 .words {
   display: flex;
   align-items: center;
   justify-content: center;
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
 }

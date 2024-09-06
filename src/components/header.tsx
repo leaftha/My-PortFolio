@@ -1,5 +1,6 @@
 import style from "../style/header.module.css";
 import { motion } from "framer-motion";
+import ScrollBtn from "./ScrollBtn";
 
 function Header() {
   const UpRolling = {
@@ -201,6 +202,7 @@ function Header() {
           </motion.p>
         </div>
       </div>
+      <ScrollBtn />
     </div>
   );
 }

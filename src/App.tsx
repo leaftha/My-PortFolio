@@ -1,12 +1,14 @@
 import React from "react";
 
-import "./App.css";
+import style from "./style/App.module.css";
 import Header from "./components/header";
+import Introduce from "./components/introduce";
 
 function App() {
   return (
-    <div className="App">
+    <div className={style.main}>
       <Header />
+      <Introduce />
     </div>
   );
 }

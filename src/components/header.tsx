@@ -2,6 +2,13 @@ import style from "../style/header.module.css";
 import { motion } from "framer-motion";
 import ScrollBtn from "./ScrollBtn";
 import { useEffect, useState } from "react";
+import {
+  UpRolling,
+  UpRolling2,
+  DownRolling,
+  DownRolling2,
+  slideUp,
+} from "../util/ani";
 
 interface dimensions {
   width: number;
@@ -19,62 +26,12 @@ function Header() {
     setDimension({ width: window.innerWidth, height: window.innerHeight });
   }, []);
 
-  const UpRolling = {
-    first: {
-      opacity: 0,
-    },
-    animation: {
-      opacity: 1,
-      y: 55,
-    },
-    transition: {
-      type: "spring ",
-    },
-  };
-  const UpRolling2 = {
-    first: {
-      opacity: 1,
-    },
-    animation: {
-      opacity: 0,
-      y: 55,
-    },
-  };
-  const DpwnRolling = {
-    first: {
-      opacity: 1,
-    },
-    animation: {
-      opacity: 0,
-      y: -45,
-    },
-  };
-  const DpwnRolling2 = {
-    first: {
-      opacity: 0,
-    },
-    animation: {
-      opacity: 1,
-      y: -45,
-    },
-  };
-
-  const slideUp = {
-    initial: {
-      top: 0,
-    },
-
-    animate: {
-      top: "-100vh",
-
-      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 },
-    },
-  };
   const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${
     dimension.height
   } Q${dimension.width / 2} ${dimension.height + 300} 0 ${
     dimension.height
   }  L0 0`;
+
   const targetPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${
     dimension.height
   } Q${dimension.width / 2} ${dimension.height} 0 ${dimension.height}  L0 0`;
@@ -111,11 +68,11 @@ function Header() {
           </motion.p>
         </div>
         <div>
-          <motion.p variants={DpwnRolling} initial="first" animate="animation">
+          <motion.p variants={DownRolling} initial="first" animate="animation">
             Y
           </motion.p>
           <motion.p
-            variants={DpwnRolling2}
+            variants={DownRolling2}
             initial="first"
             animate="animation"
             transition={{ type: "spring" }}
@@ -137,11 +94,11 @@ function Header() {
           </motion.p>
         </div>
         <div>
-          <motion.p variants={DpwnRolling} initial="first" animate="animation">
+          <motion.p variants={DownRolling} initial="first" animate="animation">
             P
           </motion.p>
           <motion.p
-            variants={DpwnRolling2}
+            variants={DownRolling2}
             initial="first"
             animate="animation"
             transition={{ type: "spring" }}
@@ -163,11 +120,11 @@ function Header() {
           </motion.p>
         </div>
         <div>
-          <motion.p variants={DpwnRolling} initial="first" animate="animation">
+          <motion.p variants={DownRolling} initial="first" animate="animation">
             R
           </motion.p>
           <motion.p
-            variants={DpwnRolling2}
+            variants={DownRolling2}
             initial="first"
             animate="animation"
             transition={{ type: "spring" }}
@@ -189,11 +146,11 @@ function Header() {
           </motion.p>
         </div>
         <div>
-          <motion.p variants={DpwnRolling} initial="first" animate="animation">
+          <motion.p variants={DownRolling} initial="first" animate="animation">
             F
           </motion.p>
           <motion.p
-            variants={DpwnRolling2}
+            variants={DownRolling2}
             initial="first"
             animate="animation"
             transition={{ type: "spring" }}
@@ -215,11 +172,11 @@ function Header() {
           </motion.p>
         </div>
         <div>
-          <motion.p variants={DpwnRolling} initial="first" animate="animation">
+          <motion.p variants={DownRolling} initial="first" animate="animation">
             L
           </motion.p>
           <motion.p
-            variants={DpwnRolling2}
+            variants={DownRolling2}
             initial="first"
             animate="animation"
             transition={{ type: "spring" }}
@@ -241,11 +198,11 @@ function Header() {
           </motion.p>
         </div>
         <div>
-          <motion.p variants={DpwnRolling} initial="first" animate="animation">
+          <motion.p variants={DownRolling} initial="first" animate="animation">
             O
           </motion.p>
           <motion.p
-            variants={DpwnRolling2}
+            variants={DownRolling2}
             initial="first"
             animate="animation"
             transition={{ type: "spring" }}

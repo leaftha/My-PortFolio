@@ -39,7 +39,7 @@ function Introduce() {
           bottom: 50,
         }}
         className={style.profileImg}
-        src="image/profile.jpg"
+        src="https://leaftha.github.io/my-portfolio/image/profile.jpg"
       />
       <div className={style.text}>
         {description.map((line, idx) => (

@@ -22,7 +22,6 @@ function Header() {
     height: 0,
   });
   const clicked = useContext(IsClickContext);
-  console.log(clicked);
 
   useEffect(() => {
     setDimension({ width: window.innerWidth, height: window.innerHeight });

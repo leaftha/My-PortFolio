@@ -45,10 +45,10 @@ function IntroduceTitle() {
 
   const slideUp = {
     initial: {
-      y: 300,
+      // y: 300,
     },
     enter: {
-      y: 0,
+      // y: 0,
       transition: { duration: 0.6, ease: [0.33, 1, 0.68, 1], delay: 2.5 },
     },
   };
@@ -57,7 +57,7 @@ function IntroduceTitle() {
     <motion.div
       className={style.main}
       variants={slideUp}
-      initial="inherit"
+      initial="initial"
       animate="enter"
     >
       <div className={style.container}>

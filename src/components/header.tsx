@@ -1,7 +1,8 @@
 import style from "../style/header.module.css";
 import { motion } from "framer-motion";
 import ScrollBtn from "./ScrollBtn";
-import { useEffect, useState } from "react";
+import { IsClickContext } from "./isClickedContext";
+import { useContext, useEffect, useState } from "react";
 import {
   UpRolling,
   UpRolling2,
@@ -20,7 +21,8 @@ function Header() {
     width: 0,
     height: 0,
   });
-  const [clicked, setClicked] = useState<boolean>(false);
+  const clicked = useContext(IsClickContext);
+  console.log(clicked);
 
   useEffect(() => {
     setDimension({ width: window.innerWidth, height: window.innerHeight });
@@ -51,7 +53,7 @@ function Header() {
       className={style.headerDiv}
       variants={slideUp}
       initial="initial"
-      animate={clicked && "animate"}
+      animate={clicked?.isClick && "animate"}
     >
       <div className={style.words}>
         <div>
@@ -211,7 +213,7 @@ function Header() {
           </motion.p>
         </div>
       </div>
-      <ScrollBtn isClick={setClicked} />
+      <ScrollBtn isClick={clicked?.setIsClick} />
       {dimension.width > 0 && (
         <>
           <svg className={style.curve}>
@@ -219,7 +221,7 @@ function Header() {
               className={style.curvePath}
               variants={curve}
               initial="initial"
-              animate={clicked && "animate"}
+              animate={clicked?.isClick && "animate"}
             ></motion.path>
           </svg>
         </>

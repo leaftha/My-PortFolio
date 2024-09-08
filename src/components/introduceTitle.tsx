@@ -1,0 +1,73 @@
+import { motion } from "framer-motion";
+import { ScrollTrigger } from "gsap/all";
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import style from "../style/introduceTitle.module.css";
+
+function IntroduceTitle() {
+  const slider = useRef<HTMLDivElement>(null);
+  const first = useRef<HTMLParagraphElement>(null);
+  const second = useRef<HTMLParagraphElement>(null);
+
+  let xPercent: number = 0;
+  let direction: number = -1;
+
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to(slider.current, {
+      scrollTrigger: {
+        trigger: document.documentElement,
+        scrub: 0.25,
+        start: 0,
+        end: window.innerHeight,
+        onUpdate: (e: { direction: number }) => (direction = e.direction * -1),
+      },
+      x: "-500px",
+    });
+
+    requestAnimationFrame(animate);
+  }, []);
+
+  const animate = () => {
+    if (xPercent < -100) {
+      xPercent = 0;
+    } else if (xPercent > 0) {
+      xPercent = -100;
+    }
+
+    gsap.set(first.current, { xPercent: xPercent });
+    gsap.set(second.current, { xPercent: xPercent });
+
+    requestAnimationFrame(animate);
+    xPercent += 0.1 * direction;
+  };
+
+  const slideUp = {
+    initial: {
+      y: 300,
+    },
+    enter: {
+      y: 0,
+      transition: { duration: 0.6, ease: [0.33, 1, 0.68, 1], delay: 2.5 },
+    },
+  };
+
+  return (
+    <motion.div
+      className={style.main}
+      variants={slideUp}
+      initial="inherit"
+      animate="enter"
+    >
+      <div className={style.container}>
+        <div className={style.titles} ref={slider}>
+          <p ref={first}>Front-End Developer-</p>
+          <p ref={second}>Front-End Developer-</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+export default IntroduceTitle;

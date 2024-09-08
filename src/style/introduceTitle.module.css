@@ -1,0 +1,37 @@
+.main {
+  width: 100%;
+  /* height: 100vh; */
+  display: flex;
+  margin: 100px 0;
+}
+
+.container {
+  position: absolute;
+  top: calc(100vh - 350px);
+}
+
+.titles {
+  position: relative;
+  white-space: nowrap;
+}
+.titles p {
+  position: relative;
+  margin: 0px;
+  color: black;
+  font-size: 200px;
+  font-weight: 500;
+  padding-right: 50px;
+}
+
+.titles p:nth-of-type(2) {
+  position: absolute;
+  left: 100%;
+  top: 0;
+}
+.mask {
+  position: relative;
+
+  overflow: hidden;
+
+  display: inline-flex;
+}

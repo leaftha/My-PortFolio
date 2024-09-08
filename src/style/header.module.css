@@ -20,7 +20,7 @@
   height: calc(100% + 300px);
 }
 .curvePath {
-  fill: #141516;
+  fill: #111111;
 }
 
 .words {
@@ -32,4 +32,8 @@
   -webkit-user-select: none;
   -khtml-user-select: none;
   user-select: none;
+}
+
+.words p {
+  color: #ffffff;
 }

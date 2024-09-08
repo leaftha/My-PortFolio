@@ -2,11 +2,14 @@ import style from "../style/ScrollBtn.module.css";
 import { motion } from "framer-motion";
 
 function ScrollBtn(props: {
-  isClick: React.Dispatch<React.SetStateAction<boolean>>;
+  isClick?: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const handlerClick = () => {
-    props.isClick(true);
+    if (props.isClick) {
+      props.isClick(true);
+    }
   };
+
   return (
     <motion.div
       onClick={handlerClick}

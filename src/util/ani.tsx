@@ -1,13 +1,9 @@
 interface HeaderAni {
-  [key: string]:
-    | {
-        opacity: number;
-        y?: number;
-        top?: string;
-      }
-    | {
-        type: string;
-      };
+  [key: string]: {
+    opacity: number;
+    y?: number;
+    top?: string;
+  };
 }
 
 interface HeaderSlideAni {
@@ -29,9 +25,6 @@ export const UpRolling: HeaderAni = {
     opacity: 1,
     y: 55,
   },
-  transition: {
-    type: "spring",
-  },
 };
 
 export const UpRolling2: HeaderAni = {
@@ -41,9 +34,6 @@ export const UpRolling2: HeaderAni = {
   animation: {
     opacity: 0,
     y: 55,
-  },
-  transition: {
-    type: "spring", // transition 속성 추가
   },
 };
 
@@ -55,9 +45,6 @@ export const DownRolling: HeaderAni = {
     opacity: 0,
     y: -45,
   },
-  transition: {
-    type: "spring", // transition 속성 추가
-  },
 };
 
 export const DownRolling2: HeaderAni = {
@@ -67,9 +54,6 @@ export const DownRolling2: HeaderAni = {
   animation: {
     opacity: 1,
     y: -45,
-  },
-  transition: {
-    type: "spring", // transition 속성 추가
   },
 };
 

@@ -25,7 +25,26 @@ function Header() {
 
   useEffect(() => {
     setDimension({ width: window.innerWidth, height: window.innerHeight });
-  }, []);
+
+    const lockScroll = () => {
+      document.body.style.overflow = "hidden";
+    };
+
+    const unlockScroll = () => {
+      document.body.style.overflow = "auto";
+      document.body.style.overflowX = "hidden";
+    };
+
+    if (clicked?.isClick) {
+      unlockScroll();
+    } else {
+      lockScroll();
+    }
+
+    return () => {
+      unlockScroll();
+    };
+  }, [clicked?.isClick]);
 
   const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${
     dimension.height

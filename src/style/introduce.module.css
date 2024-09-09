@@ -20,6 +20,7 @@
   /* padding: 1px; */
   width: 500px;
   height: 700px;
+  cursor: pointer;
   /* border: 10px solid #ffffff; */
   /* border-radius: 50%; */
 }
@@ -27,12 +28,13 @@
 .text {
   /* color: #ffffff; */
   font-size: 32px;
-  line-height: 50px;
+  line-height: 55px;
 }
 
 .text p {
   white-space: pre-wrap;
 }
+
 .mask {
   position: relative;
   overflow: hidden;

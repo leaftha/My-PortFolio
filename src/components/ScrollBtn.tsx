@@ -11,15 +11,14 @@ function ScrollBtn(props: {
   };
 
   return (
-    <motion.div
+    <motion.img
+      src={`${process.env.PUBLIC_URL}/image/scroll-down.png`}
       onClick={handlerClick}
       className={style.btn}
       initial={{ y: 0 }}
       animate={{ y: [10, 0, 10] }}
       transition={{ repeat: Infinity, repeatType: "loop", duration: 1 }}
-    >
-      {/* <p className={style.text}>{"⇩"}</p> */}
-    </motion.div>
+    ></motion.img>
   );
 }
 

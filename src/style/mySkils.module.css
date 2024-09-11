@@ -1,0 +1,54 @@
+.main {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.history {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  line-height: 35px;
+  margin: 50px 0;
+}
+
+.history p:nth-child(6) {
+  cursor: pointer;
+}
+.history p:last-child {
+  cursor: pointer;
+  border-bottom: 1px solid #111111;
+}
+.skilContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.skilTitle {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.skilGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 10px;
+  /* width: 500px;
+  height: 300px; */
+  justify-items: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.skilGrid div {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  border-radius: 20%;
+}

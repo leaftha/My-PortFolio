@@ -1,5 +1,6 @@
+import { useRef } from "react";
 import style from "../style/mySkils.module.css";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 type gridSkil = {
   skil: string;
@@ -7,6 +8,8 @@ type gridSkil = {
 };
 
 function MySkils() {
+  const skilRef = useRef(null);
+  const inView = useInView(skilRef);
   let skils: gridSkil[] = [
     {
       skil: "html",
@@ -59,13 +62,15 @@ function MySkils() {
       </div>
       <div className={style.skilContainer}>
         <h1 className={style.skilTitle}>My Skils</h1>
-        <div className={style.skilGrid}>
+        <div className={style.skilGrid} ref={skilRef}>
           {skils.map((skil, idx) => (
             <motion.div
               drag
               dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
               dragTransition={{ bounceStiffness: 500, bounceDamping: 20 }}
               dragElastic={1}
+              initial={{ scale: 0 }}
+              animate={inView && { scale: 1 }}
               style={{
                 x: 0,
                 y: 0,

@@ -69,11 +69,11 @@ function MySkils() {
               dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
               dragTransition={{ bounceStiffness: 500, bounceDamping: 20 }}
               dragElastic={1}
-              whileHover={{ scale: 1.2, transition: { type: "spring" } }}
+              whileHover={{ scale: 1.2, transition: { duration: 0.1 } }}
               initial={{ scale: 0 }}
               animate={inView ? { scale: 1 } : { scale: 0 }}
               transition={{
-                type: "spring",
+                type: inView ? "spring" : "",
                 duration: inView ? 1 : 0,
               }}
               style={{

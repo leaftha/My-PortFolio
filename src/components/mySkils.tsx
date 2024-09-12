@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import style from "../style/mySkils.module.css";
-import { motion, useInView } from "framer-motion";
+import { motion, spring, useInView } from "framer-motion";
 
 type gridSkil = {
   skil: string;
@@ -69,8 +69,13 @@ function MySkils() {
               dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
               dragTransition={{ bounceStiffness: 500, bounceDamping: 20 }}
               dragElastic={1}
+              whileHover={{ scale: 1.2, transition: { type: "spring" } }}
               initial={{ scale: 0 }}
-              animate={inView && { scale: 1 }}
+              animate={inView ? { scale: 1 } : { scale: 0 }}
+              transition={{
+                type: "spring",
+                duration: inView ? 1 : 0,
+              }}
               style={{
                 x: 0,
                 y: 0,

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
+
 .main {
   width: 100%;
   /* height: 100vh; */
@@ -15,6 +17,8 @@
   white-space: nowrap;
 }
 .titles p {
+  font-family: "Noto Serif", serif;
+
   position: relative;
   margin: 0px;
   color: black;

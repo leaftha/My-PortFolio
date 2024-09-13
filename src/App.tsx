@@ -5,6 +5,7 @@ import Header from "./components/header";
 import Introduce from "./components/introduce";
 import { IsClickProvider } from "./components/isClickedContext";
 import MySkils from "./components/mySkils";
+import Projects from "./components/projects";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Introduce />
       </IsClickProvider>
       <MySkils />
+      <Projects />
     </div>
   );
 }

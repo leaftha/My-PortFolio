@@ -1,14 +1,24 @@
 import { useState } from "react";
 import style from "../style/Projects.module.css";
 
+interface project {
+  name: string;
+  img: string;
+  menber: number;
+  time: string;
+  git: string;
+  address: string;
+  description: string;
+}
+
 function Projects() {
   const [current, setCurrent] = useState<number>(0);
 
-  const projects: object[] = [
+  const projects: project[] = [
     {
       name: "diet-record",
-      img: "",
-      menber: "1",
+      img: `${process.env.PUBLIC_URL}/image/diet-record.jpg`,
+      menber: 1,
       time: "23/06/24 ~ 23/10/11",
       git: "https://github.com/leaftha/diet-record",
       address: "https://diet-record.vercel.app/",
@@ -18,7 +28,7 @@ function Projects() {
     {
       name: "reading-history",
       img: "",
-      menber: "5",
+      menber: 5,
       time: "23/09/20 ~ 23/12/2",
       git: "https://github.com/leaftha/reading-history",
       address: "",
@@ -27,8 +37,8 @@ function Projects() {
     },
     {
       name: "my-travel",
-      img: "",
-      menber: "1",
+      img: `${process.env.PUBLIC_URL}/image/my-travel.jpg`,
+      menber: 1,
       time: "24/03/23 ~ 24/07/29",
       git: "https://github.com/leaftha/my-travel",
       address: "https://my-travel-sepia.vercel.app/",
@@ -38,7 +48,7 @@ function Projects() {
     {
       name: "Data-Structure-and-Algorithm",
       img: "",
-      menber: "1",
+      menber: 1,
       time: "23/03/09 ~ ",
       git: "https://github.com/leaftha/Data-Structure-and-Algorithm",
       address: "",
@@ -48,7 +58,7 @@ function Projects() {
     {
       name: "mini-projects",
       img: "",
-      menber: "1",
+      menber: 1,
       time: "23/03/08",
       git: "https://github.com/leaftha/mini-projects",
       address: "",
@@ -61,13 +71,61 @@ function Projects() {
     <div className={style.main}>
       <h1>My Projects</h1>
       <div className={style.Projects}>
-        <button>{"<"}</button>
-        <div>
+        <svg
+          className={style.prevbtn}
+          onClick={() => {
+            setCurrent(current - 1 >= 0 ? current - 1 : projects.length - 1);
+          }}
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 -960 960 960"
+          width="24px"
+          fill="#5f6368"
+        >
+          <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
+        </svg>
+        <div className={style.projectsbody}>
           {projects.map((project, idx) => (
-            <div></div>
+            <div
+              className={style.projectContainer}
+              key={project.name}
+              style={current === idx ? {} : { display: "none" }}
+            >
+              <img className={style.imgs} src={project.img} />
+              <div className={style.contents}>
+                <h1>{project.name}</h1>
+                <p
+                  onClick={() => {
+                    window.open(project.git);
+                  }}
+                >
+                  Git Hub : {project.git}
+                </p>
+                <p
+                  onClick={() => {
+                    window.open(project.address);
+                  }}
+                >
+                  {project.address}
+                </p>
+                <p>{project.description}</p>
+              </div>
+            </div>
           ))}
         </div>
-        <button>{">"}</button>
+        <svg
+          className={style.nextbtn}
+          onClick={() => {
+            setCurrent(current + 1 <= projects.length - 1 ? current + 1 : 0);
+          }}
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 -960 960 960"
+          width="24px"
+          fill="#5f6368"
+        >
+          <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
+        </svg>
       </div>
     </div>
   );

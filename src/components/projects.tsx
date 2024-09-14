@@ -104,7 +104,7 @@ function Projects() {
       git: "https://github.com/leaftha/Data-Structure-and-Algorithm",
       address: "",
       description:
-        "프로그래머스나 백준에서 푼 알고리즘 문제를 기록한 프로젝트입니다.\n",
+        "프로그래머스나 백준에서 자바스크립트로 푼 알고리즘 문제를 기록한 프로젝트입니다.\n백준 프로그래머스 외에도 알고리즘 강의를 들으면 나오는 문제들도 포함되어 있으며, 다시 풀어야 할 문제나 풀때 힌트을 본 문제들은 뒤에 #을 붙여 표시하고 있습니다.\n차근 차근 공부하고 있어 아직 부족하지만 목표로 백준 티어 최소 Platinum을 목표로 노력하고 있습니다.",
     },
     {
       name: "mini-projects",
@@ -114,7 +114,7 @@ function Projects() {
       git: "https://github.com/leaftha/mini-projects",
       address: "",
       description:
-        "언어를 공부하거나 새로운 라이브러리 API를 공부할때 연습용 프로젝트 모음 입니다.",
+        "언어를 공부하거나 새로운 라이브러리, API를 공부할때 연습용 프로젝트 모음 입니다.\nthree.js나 React, 그리고 gsap 같은 새로운 것을 배우고 실습을 할때 작은 토이프로젝트들이 있습니다.\n개인적으로 인터렉티브한 웹을 만드는 것을 좋아하기 때문에 유튜브나 다른 사이트에서 본 것을 클론 코딩을 하여 만들어 본 것들도 있습니다.\n개인적으로 Canvas로 인터렉션들을 만든 프로젝트나 Three.js의 3D애니메이션들이 가장 인상 깊은 프로젝트였습니다.",
     },
   ];
 
@@ -153,7 +153,7 @@ function Projects() {
                 exit={{ opacity: 0, x: -100 }}
                 transition={{ duration: 0.5 }}
               >
-                {projects[current].img != "" && (
+                {projects[current].img !== "" && (
                   <motion.img
                     className={style.imgs}
                     onHoverStart={() => {

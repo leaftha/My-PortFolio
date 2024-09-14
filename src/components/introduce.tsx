@@ -1,6 +1,12 @@
 import style from "../style/introduce.module.css";
 import IntroduceTitle from "./introduceTitle";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useInView,
+  useSpring,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { IsClickContext } from "./isClickedContext";
 import { useContext, useRef } from "react";
 
@@ -32,13 +38,15 @@ function Introduce() {
     },
   };
 
-  const yPos = useTransform(scrollY, [0, 1000], [0, 1100]);
+  const yPos = useTransform(scrollY, [0, 1100], [0, 1100]);
+  const springY = useSpring(yPos, { stiffness: 100, damping: 20 });
 
   return (
     <div ref={introduce} className={style.body}>
       <div className={style.introduce}>
         <motion.img
-          style={{ y: yPos }}
+          style={{ y: springY }}
+          transition={{ type: "spring" }}
           className={style.profileImg}
           src={`${process.env.PUBLIC_URL}/image/profile.jpg`}
         />

@@ -37,6 +37,14 @@ function MySkils() {
     },
   ];
 
+  const cardVariants = {
+    hidden: { scale: 0 },
+    visible: (i: number) => ({
+      scale: 1,
+      transition: { delay: i * 0.2, duration: 0.5 },
+    }),
+  };
+
   return (
     <div className={style.main}>
       <div className={style.history}>
@@ -71,8 +79,10 @@ function MySkils() {
               dragTransition={{ bounceStiffness: 500, bounceDamping: 20 }}
               dragElastic={1}
               whileHover={{ scale: 1.2, transition: { duration: 0.1 } }}
-              initial={{ scale: 0 }}
-              animate={inView ? { scale: 1 } : { scale: 0 }}
+              variants={cardVariants}
+              custom={idx}
+              initial="hidden"
+              animate={inView ? "visible" : "hidden"}
               transition={{
                 type: inView ? "spring" : "",
                 duration: inView ? 1 : 0,

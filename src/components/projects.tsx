@@ -1,5 +1,6 @@
 import { useState } from "react";
 import style from "../style/Projects.module.css";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface project {
   name: string;
@@ -67,15 +68,21 @@ function Projects() {
     },
   ];
 
+  const handleNext = () => {
+    setCurrent((prev) => (prev + 1 <= projects.length - 1 ? prev + 1 : 0));
+  };
+
+  const handlePrev = () => {
+    setCurrent((prev) => (prev - 1 >= 0 ? prev - 1 : projects.length - 1));
+  };
+
   return (
     <div className={style.main}>
       <h1>My Projects</h1>
       <div className={style.Projects}>
         <svg
           className={style.prevbtn}
-          onClick={() => {
-            setCurrent(current - 1 >= 0 ? current - 1 : projects.length - 1);
-          }}
+          onClick={handlePrev}
           xmlns="http://www.w3.org/2000/svg"
           height="24px"
           viewBox="0 -960 960 960"
@@ -84,40 +91,49 @@ function Projects() {
         >
           <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
         </svg>
+
         <div className={style.projectsbody}>
-          {projects.map((project, idx) => (
-            <div
+          <AnimatePresence>
+            <motion.div
+              key={current}
               className={style.projectContainer}
-              key={project.name}
-              style={current === idx ? {} : { display: "none" }}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.5 }}
             >
-              <img className={style.imgs} src={project.img} />
+              {projects[current].img != "" && (
+                <img
+                  className={style.imgs}
+                  src={projects[current].img}
+                  alt="프로젝트 이미지"
+                />
+              )}
               <div className={style.contents}>
-                <h1>{project.name}</h1>
+                <h1>{projects[current].name}</h1>
                 <p
                   onClick={() => {
-                    window.open(project.git);
+                    window.open(projects[current].git);
                   }}
                 >
-                  Git Hub : {project.git}
+                  Git Hub : {projects[current].git}
                 </p>
                 <p
                   onClick={() => {
-                    window.open(project.address);
+                    window.open(projects[current].address);
                   }}
                 >
-                  {project.address}
+                  {projects[current].address}
                 </p>
-                <p>{project.description}</p>
+                <p>{projects[current].description}</p>
               </div>
-            </div>
-          ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
+
         <svg
           className={style.nextbtn}
-          onClick={() => {
-            setCurrent(current + 1 <= projects.length - 1 ? current + 1 : 0);
-          }}
+          onClick={handleNext}
           xmlns="http://www.w3.org/2000/svg"
           height="24px"
           viewBox="0 -960 960 960"

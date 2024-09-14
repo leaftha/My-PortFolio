@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 import style from "../style/Projects.module.css";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -12,8 +13,57 @@ interface project {
   description: string;
 }
 
+const scaleAnimation = {
+  initial: { scale: 0, x: "-50%", y: "-50%" },
+  open: {
+    scale: 1,
+    x: "-50%",
+    y: "-50%",
+    transition: { duration: 0.4, ease: [0.76, 0, 0.24, 1] },
+  },
+  closed: {
+    scale: 0,
+    x: "-50%",
+    y: "-50%",
+    closed: { duration: 0.4, ease: [0.32, 0, 0.67, 0] },
+  },
+};
+
 function Projects() {
+  const cursor = useRef<HTMLDivElement | null>(null);
+  const cursorLabel = useRef<HTMLDivElement | null>(null);
   const [current, setCurrent] = useState<number>(0);
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    const moveCursorX = gsap.quickTo(cursor.current, "left", {
+      duration: 0.5,
+      ease: "power3",
+    });
+    const moveCursorY = gsap.quickTo(cursor.current, "top", {
+      duration: 0.5,
+      ease: "power3",
+    });
+    const moveCursorLablerX = gsap.quickTo(cursorLabel.current, "left", {
+      duration: 0.45,
+      ease: "power3",
+    });
+    const moveCursorLablerY = gsap.quickTo(cursorLabel.current, "top", {
+      duration: 0.45,
+      ease: "power3",
+    });
+
+    window.addEventListener("mousemove", (e) => {
+      if (!cursor.current) return;
+      const { clientX, clientY } = e;
+      // const cursorWidth = cursor.current.offsetWidth / 2;
+      // const cursorHeight = cursor.current.offsetHeight / 2;
+      moveCursorX(clientX);
+      moveCursorY(clientY);
+      moveCursorLablerX(clientX);
+      moveCursorLablerY(clientY);
+    });
+  }, []);
 
   const projects: project[] = [
     {
@@ -77,73 +127,93 @@ function Projects() {
   };
 
   return (
-    <div className={style.main}>
-      <h1>My Projects</h1>
-      <div className={style.Projects}>
-        <svg
-          className={style.prevbtn}
-          onClick={handlePrev}
-          xmlns="http://www.w3.org/2000/svg"
-          height="24px"
-          viewBox="0 -960 960 960"
-          width="24px"
-          fill="#5f6368"
-        >
-          <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
-        </svg>
+    <>
+      <div className={style.main}>
+        <h1>My Projects</h1>
+        <div className={style.Projects}>
+          <svg
+            className={style.prevbtn}
+            onClick={handlePrev}
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#5f6368"
+          >
+            <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
+          </svg>
 
-        <div className={style.projectsbody}>
-          <AnimatePresence>
-            <motion.div
-              key={current}
-              className={style.projectContainer}
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.5 }}
-            >
-              {projects[current].img != "" && (
-                <img
-                  className={style.imgs}
-                  src={projects[current].img}
-                  alt="프로젝트 이미지"
-                />
-              )}
-              <div className={style.contents}>
-                <h1>{projects[current].name}</h1>
-                <p
-                  onClick={() => {
-                    window.open(projects[current].git);
-                  }}
-                >
-                  Git Hub : {projects[current].git}
-                </p>
-                <p
-                  onClick={() => {
-                    window.open(projects[current].address);
-                  }}
-                >
-                  {projects[current].address}
-                </p>
-                <p>{projects[current].description}</p>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+          <div className={style.projectsbody}>
+            <AnimatePresence>
+              <motion.div
+                key={current}
+                className={style.projectContainer}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                transition={{ duration: 0.5 }}
+              >
+                {projects[current].img != "" && (
+                  <motion.img
+                    className={style.imgs}
+                    onHoverStart={() => {
+                      setActive(true);
+                    }}
+                    onHoverEnd={() => {
+                      setActive(false);
+                    }}
+                    onClick={() => {
+                      window.open(projects[current].address);
+                    }}
+                    src={projects[current].img}
+                    alt="프로젝트 이미지"
+                  />
+                )}
+                <div className={style.contents}>
+                  <h1>{projects[current].name}</h1>
+                  <p
+                    onClick={() => {
+                      window.open(projects[current].git);
+                    }}
+                  >
+                    Git Hub : {projects[current].git}
+                  </p>
+                  <p>{projects[current].description}</p>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          <svg
+            className={style.nextbtn}
+            onClick={handleNext}
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#5f6368"
+          >
+            <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
+          </svg>
         </div>
-
-        <svg
-          className={style.nextbtn}
-          onClick={handleNext}
-          xmlns="http://www.w3.org/2000/svg"
-          height="24px"
-          viewBox="0 -960 960 960"
-          width="24px"
-          fill="#5f6368"
-        >
-          <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
-        </svg>
       </div>
-    </div>
+      <motion.div
+        ref={cursor}
+        variants={scaleAnimation}
+        initial={"initial"}
+        animate={active ? "open" : "closed"}
+        className={style.cursor}
+      ></motion.div>
+      <motion.div
+        ref={cursorLabel}
+        variants={scaleAnimation}
+        initial={"initial"}
+        animate={active ? "open" : "closed"}
+        className={style.cursorLabel}
+      >
+        View
+      </motion.div>
+    </>
   );
 }
 

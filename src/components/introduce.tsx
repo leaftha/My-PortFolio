@@ -30,11 +30,11 @@ function Introduce() {
     },
     open: (i: number) => ({
       y: "0%",
-      transition: { duration: 0.5, delay: 0.5 + 0.1 * i },
+      transition: { duration: 0.2, delay: 0.2 + 0.1 * i },
     }),
     closed: {
       y: "100%",
-      transition: { duration: 0.5 },
+      transition: { duration: 0.2 },
     },
   };
 

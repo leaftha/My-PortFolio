@@ -232,7 +232,7 @@ function Header() {
         </div>
       </div>
       <ScrollBtn isClick={clicked?.setIsClick} />
-      {dimension.width > 0 && (
+      {/* {dimension.width > 0 && (
         <>
           <svg className={style.curve}>
             <motion.path
@@ -243,7 +243,7 @@ function Header() {
             ></motion.path>
           </svg>
         </>
-      )}
+      )} */}
     </motion.div>
   );
 }

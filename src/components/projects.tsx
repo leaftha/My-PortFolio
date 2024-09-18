@@ -235,6 +235,8 @@ function Projects() {
                     onHoverEnd={() => {
                       setActive(false);
                     }}
+                    initial={{ scale: 1 }}
+                    animate={active ? { scale: 1.5 } : { scale: 1 }}
                     onClick={() => {
                       window.open(projects[current].address);
                     }}

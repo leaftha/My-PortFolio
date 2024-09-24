@@ -1,11 +1,3 @@
-interface HeaderAni {
-  [key: string]: {
-    opacity: number;
-    y?: number;
-    top?: string;
-  };
-}
-
 interface HeaderSlideAni {
   [key: string]: {
     top?: number | string;
@@ -17,45 +9,61 @@ interface HeaderSlideAni {
   };
 }
 
-export const UpRolling: HeaderAni = {
+export const UpRolling = {
   first: {
     opacity: 0,
   },
-  animation: {
-    opacity: 1,
-    y: 55,
-  },
+  animation: (i: number) =>
+    i % 2 === 0
+      ? {
+          opacity: 1,
+          y: 55,
+          transition: { duration: 0.2, delay: 0.2 + 0.1 * i },
+        }
+      : {
+          opacity: 0,
+          y: -45,
+          transition: { duration: 0.2, delay: 0.2 + 0.1 * i },
+        },
 };
 
-export const UpRolling2: HeaderAni = {
+export const UpRolling2 = {
   first: {
     opacity: 1,
   },
-  animation: {
-    opacity: 0,
-    y: 55,
-  },
+  animation: (i: number) =>
+    i % 2 === 0
+      ? {
+          opacity: 0,
+          y: 55,
+          transition: { duration: 0.2, delay: 0.2 + 0.1 * i },
+        }
+      : {
+          opacity: 1,
+          y: -45,
+          transition: { duration: 0.2, delay: 0.2 + 0.1 * i },
+        },
 };
 
-export const DownRolling: HeaderAni = {
-  first: {
-    opacity: 1,
-  },
-  animation: {
-    opacity: 0,
-    y: -45,
-  },
-};
+// export const DownRolling: HeaderAni = {
+//   first: {
+//     opacity: 1,
+//   },
+//   animation: {
+//     opacity: 0,
+//     y: -45,
+//   },
+// };
 
-export const DownRolling2: HeaderAni = {
-  first: {
-    opacity: 0,
-  },
-  animation: {
-    opacity: 1,
-    y: -45,
-  },
-};
+// export const DownRolling2: HeaderAni = {
+//   first: {
+//     opacity: 0,
+//   },
+//   animation: {
+//     opacity: 1,
+//     y: -45,
+//   },
+// };
 
 export const slideUp: HeaderSlideAni = {
   initial: {

@@ -3,13 +3,7 @@ import { motion } from "framer-motion";
 import ScrollBtn from "./ScrollBtn";
 import { IsClickContext } from "./isClickedContext";
 import { useContext, useEffect, useState } from "react";
-import {
-  UpRolling,
-  UpRolling2,
-  DownRolling,
-  DownRolling2,
-  slideUp,
-} from "../util/ani";
+import { UpRolling, UpRolling2, slideUp } from "../util/ani";
 
 interface dimensions {
   width: number;
@@ -56,6 +50,20 @@ function Header() {
     dimension.height
   } Q${dimension.width / 2} ${dimension.height} 0 ${dimension.height}  L0 0`;
 
+  const str: string[] = [
+    "M",
+    "Y",
+    ".",
+    "P",
+    "O",
+    "R",
+    "T",
+    "F",
+    "O",
+    "L",
+    "I",
+    "O",
+  ];
   const curve = {
     initial: {
       d: initialPath,
@@ -74,162 +82,27 @@ function Header() {
       animate={clicked?.isClick && "animate"}
     >
       <div className={style.words}>
-        <div>
-          <motion.p
-            variants={UpRolling}
-            initial="first"
-            animate="animation"
-            transition={{ type: "spring" }}
-          >
-            M
-          </motion.p>
-          <motion.p variants={UpRolling2} initial="first" animate="animation">
-            M
-          </motion.p>
-        </div>
-        <div>
-          <motion.p variants={DownRolling} initial="first" animate="animation">
-            Y
-          </motion.p>
-          <motion.p
-            variants={DownRolling2}
-            initial="first"
-            animate="animation"
-            transition={{ type: "spring" }}
-          >
-            Y
-          </motion.p>
-        </div>
-        <div>
-          <motion.p
-            variants={UpRolling}
-            initial="first"
-            animate="animation"
-            transition={{ type: "spring" }}
-          >
-            .
-          </motion.p>
-          <motion.p variants={UpRolling2} initial="first" animate="animation">
-            .
-          </motion.p>
-        </div>
-        <div>
-          <motion.p variants={DownRolling} initial="first" animate="animation">
-            P
-          </motion.p>
-          <motion.p
-            variants={DownRolling2}
-            initial="first"
-            animate="animation"
-            transition={{ type: "spring" }}
-          >
-            P
-          </motion.p>
-        </div>
-        <div>
-          <motion.p
-            variants={UpRolling}
-            initial="first"
-            animate="animation"
-            transition={{ type: "spring" }}
-          >
-            O
-          </motion.p>
-          <motion.p variants={UpRolling2} initial="first" animate="animation">
-            O
-          </motion.p>
-        </div>
-        <div>
-          <motion.p variants={DownRolling} initial="first" animate="animation">
-            R
-          </motion.p>
-          <motion.p
-            variants={DownRolling2}
-            initial="first"
-            animate="animation"
-            transition={{ type: "spring" }}
-          >
-            R
-          </motion.p>
-        </div>
-        <div>
-          <motion.p
-            variants={UpRolling}
-            initial="first"
-            animate="animation"
-            transition={{ type: "spring" }}
-          >
-            T
-          </motion.p>
-          <motion.p variants={UpRolling2} initial="first" animate="animation">
-            T
-          </motion.p>
-        </div>
-        <div>
-          <motion.p variants={DownRolling} initial="first" animate="animation">
-            F
-          </motion.p>
-          <motion.p
-            variants={DownRolling2}
-            initial="first"
-            animate="animation"
-            transition={{ type: "spring" }}
-          >
-            F
-          </motion.p>
-        </div>
-        <div>
-          <motion.p
-            variants={UpRolling}
-            initial="first"
-            animate="animation"
-            transition={{ type: "spring" }}
-          >
-            O
-          </motion.p>
-          <motion.p variants={UpRolling2} initial="first" animate="animation">
-            O
-          </motion.p>
-        </div>
-        <div>
-          <motion.p variants={DownRolling} initial="first" animate="animation">
-            L
-          </motion.p>
-          <motion.p
-            variants={DownRolling2}
-            initial="first"
-            animate="animation"
-            transition={{ type: "spring" }}
-          >
-            L
-          </motion.p>
-        </div>
-        <div>
-          <motion.p
-            variants={UpRolling}
-            initial="first"
-            animate="animation"
-            transition={{ type: "spring" }}
-          >
-            I
-          </motion.p>
-          <motion.p variants={UpRolling2} initial="first" animate="animation">
-            I
-          </motion.p>
-        </div>
-        <div>
-          <motion.p variants={DownRolling} initial="first" animate="animation">
-            O
-          </motion.p>
-          <motion.p
-            variants={DownRolling2}
-            initial="first"
-            animate="animation"
-            transition={{ type: "spring" }}
-          >
-            O
-          </motion.p>
-        </div>
+        {str.map((word, idx) => (
+          <div>
+            <motion.p
+              variants={UpRolling}
+              custom={idx}
+              initial="first"
+              animate="animation"
+              transition={{ type: "spring" }}
+            >
+              {word}
+            </motion.p>
+            <motion.p
+              variants={UpRolling2}
+              initial="first"
+              custom={idx}
+              animate="animation"
+            >
+              {word}
+            </motion.p>
+          </div>
+        ))}
       </div>
       <ScrollBtn isClick={clicked?.setIsClick} />
       {/* {dimension.width > 0 && (

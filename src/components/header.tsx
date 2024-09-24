@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import ScrollBtn from "./ScrollBtn";
 import { IsClickContext } from "./isClickedContext";
 import { useContext, useEffect, useState } from "react";
-import { UpRolling, UpRolling2, slideUp } from "../util/ani";
+import { UpRolling, slideUp } from "../util/ani";
 
 interface dimensions {
   width: number;
@@ -93,14 +93,14 @@ function Header() {
             >
               {word}
             </motion.p>
-            <motion.p
+            {/* <motion.p
               variants={UpRolling2}
               initial="first"
               custom={idx}
               animate="animation"
             >
               {word}
-            </motion.p>
+            </motion.p> */}
           </div>
         ))}
       </div>

@@ -11,39 +11,27 @@ interface HeaderSlideAni {
 
 export const UpRolling = {
   first: {
-    opacity: 0,
+    scale: 10,
+    // opacity: 0,
   },
-  animation: (i: number) =>
-    i % 2 === 0
-      ? {
-          opacity: 1,
-          y: 55,
-          transition: { duration: 0.2, delay: 0.2 + 0.1 * i },
-        }
-      : {
-          opacity: 0,
-          y: -45,
-          transition: { duration: 0.2, delay: 0.2 + 0.1 * i },
-        },
+  animation: (i: number) => ({
+    // opacity: 1,
+    // y: 55,
+    scale: 1,
+    transition: { duration: 0.2, delay: 0.2 + 0.1 * i },
+  }),
 };
 
-export const UpRolling2 = {
-  first: {
-    opacity: 1,
-  },
-  animation: (i: number) =>
-    i % 2 === 0
-      ? {
-          opacity: 0,
-          y: 55,
-          transition: { duration: 0.2, delay: 0.2 + 0.1 * i },
-        }
-      : {
-          opacity: 1,
-          y: -45,
-          transition: { duration: 0.2, delay: 0.2 + 0.1 * i },
-        },
-};
+// export const UpRolling2 = {
+//   first: {
+//     opacity: 1,
+//   },
+//   animation: (i: number) => ({
+//     opacity: 0,
+//     y: 55,
+//     transition: { duration: 0.2, delay: 0.2 + 0.1 * i },
+//   }),
+// };
 
 // export const DownRolling: HeaderAni = {
 //   first: {

@@ -20,22 +20,29 @@ function Contact() {
     formData.append("phone", phone);
     formData.append("message", message);
 
-    fetch(
-      "https://script.google.com/macros/s/AKfycbyBl2GxvvVINsHW_8gZwJweaTHAoc2gp90iEaWxVOc-h88vOamPKgb5CoJujy__VcobxQ/exec",
-      {
-        method: "POST",
-        mode: "cors", // CORS를 허용하는 모드
-        body: formData,
-      }
-    )
-      .then((response) => response.text())
-      .then((data) => {
-        console.log(data);
-        alert("Form submitted successfully!");
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    if (name.length !== 0 && phone.length !== 0 && message.length !== 0) {
+      fetch(
+        "https://script.google.com/macros/s/AKfycbyBl2GxvvVINsHW_8gZwJweaTHAoc2gp90iEaWxVOc-h88vOamPKgb5CoJujy__VcobxQ/exec",
+        {
+          method: "POST",
+          mode: "cors", // CORS를 허용하는 모드
+          body: formData,
+        }
+      )
+        .then((response) => response.text())
+        .then((data) => {
+          console.log(data);
+          alert("Form submitted successfully!");
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+      setName("");
+      setPhone("");
+      setMessage("");
+    } else {
+      alert("빈칸을 채워주세요");
+    }
   }
   const xPos = useTransform(scrollYProgress, [0, 1], [0, -1200]);
   const springX = useSpring(xPos, { stiffness: 100, damping: 20 });

@@ -14,7 +14,9 @@ function Introduce() {
   const clicked = useContext(IsClickContext);
   const introduce = useRef(null);
   const isView = useInView(introduce);
-  const { scrollY } = useScroll();
+  const { scrollY } = useScroll({
+    target: introduce,
+  });
   const description: string[] = [
     "안녕하세요.",
     "만드는 것을 좋아하는 개발자 피세찬입니다.",

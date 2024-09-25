@@ -18,9 +18,9 @@
 
 .title {
   font-family: "Noto Serif", serif;
-
   font-size: 100px;
   font-weight: bold;
+  text-align: right;
 }
 
 .forms {

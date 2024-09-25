@@ -1,10 +1,16 @@
 import style from "../style/contact.module.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { motion, useSpring, useScroll, useTransform } from "framer-motion";
 
 function Contact() {
+  const comportent = useRef(null);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const { scrollYProgress } = useScroll({
+    target: comportent,
+    offset: ["start end", "end end"],
+  });
 
   function formHandler(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -31,11 +37,14 @@ function Contact() {
         console.error("Error:", error);
       });
   }
-
+  const xPos = useTransform(scrollYProgress, [0, 1], [0, -1200]);
+  const springX = useSpring(xPos, { stiffness: 100, damping: 20 });
   return (
-    <div className={style.main}>
+    <div className={style.main} ref={comportent}>
       <div className={style.titleContainer}>
-        <h1 className={style.title}>Contact Me</h1>
+        <motion.h1 style={{ x: springX }} className={style.title}>
+          Contact Me
+        </motion.h1>
       </div>
 
       <form className={style.forms} onSubmit={formHandler}>

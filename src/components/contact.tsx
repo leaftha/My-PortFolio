@@ -46,11 +46,34 @@ function Contact() {
   }
   const xPos = useTransform(scrollYProgress, [0, 1], [0, -1200]);
   const springX = useSpring(xPos, { stiffness: 100, damping: 20 });
+  const titleText = useTransform(
+    scrollYProgress,
+    [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+    [
+      "Contáctame", // 스페인어
+      "Kontaktieren Sie mich", // 독일어
+      "Contactez-moi", // 프랑스어
+      "Contattami", // 이탈리아어
+      "Свяжитесь со мной", // 러시아어
+      "연락하기", // 한국어
+      "Contate-me", // 포르투갈어
+      "お問い合わせ", // 일본어
+      "İletişime geç", // 터키어
+      "Liên hệ với tôi", // 베트남어
+      "Contact Me", // 영어
+    ]
+  );
+  const backgroundColor = useTransform(
+    scrollYProgress,
+    [0.9, 1],
+    ["#ffffff", "#ffcc00"]
+  );
+
   return (
     <div className={style.main} ref={comportent}>
       <div className={style.titleContainer}>
         <motion.h1 style={{ x: springX }} className={style.title}>
-          Contact Me
+          {titleText}
         </motion.h1>
       </div>
 

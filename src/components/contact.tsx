@@ -1,12 +1,21 @@
 import style from "../style/contact.module.css";
 import { useRef, useState } from "react";
-import { motion, useSpring, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useSpring,
+  useScroll,
+  useTransform,
+  useInView,
+} from "framer-motion";
 
-function Contact() {
+function Contact(props: {
+  setEnd: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const comportent = useRef(null);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const isView = useInView(comportent);
   const { scrollYProgress } = useScroll({
     target: comportent,
     offset: ["start end", "end end"],
@@ -63,11 +72,12 @@ function Contact() {
       "Contact Me", // 영어
     ]
   );
-  const backgroundColor = useTransform(
-    scrollYProgress,
-    [0.9, 1],
-    ["#ffffff", "#ffcc00"]
-  );
+
+  if (isView) {
+    props.setEnd(true);
+  } else {
+    props.setEnd(false);
+  }
 
   return (
     <div className={style.main} ref={comportent}>

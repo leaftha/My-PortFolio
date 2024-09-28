@@ -1,4 +1,10 @@
 .main {
   display: flex;
   flex-direction: column;
+  background: #ffffff;
+  transition: 1s linear;
+}
+
+.active {
+  background-color: #262626;
 }

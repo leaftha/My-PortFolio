@@ -53,7 +53,7 @@ function Header() {
     >
       <div className={style.words}>
         {str.map((word, idx) => (
-          <div>
+          <div key={idx}>
             <motion.p
               variants={UpRolling}
               custom={idx}

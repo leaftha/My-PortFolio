@@ -15,16 +15,19 @@ function IntroduceTitle() {
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    gsap.to(slider.current, {
-      scrollTrigger: {
-        trigger: document.documentElement,
-        scrub: 0.25,
-        start: 0,
-        end: window.innerHeight,
-        onUpdate: (e: { direction: number }) => (direction = e.direction * -1),
-      },
-      x: "-500px",
-    });
+    if (slider.current) {
+      gsap.to(slider.current, {
+        scrollTrigger: {
+          trigger: document.documentElement,
+          scrub: 0.25,
+          start: 0,
+          end: window.innerHeight,
+          onUpdate: (e: { direction: number }) =>
+            (direction = e.direction * -1),
+        },
+        x: "-500px",
+      });
+    }
 
     requestAnimationFrame(animate);
   }, []);
@@ -36,8 +39,12 @@ function IntroduceTitle() {
       xPercent = -100;
     }
 
-    gsap.set(first.current, { xPercent: xPercent });
-    gsap.set(second.current, { xPercent: xPercent });
+    if (first.current) {
+      gsap.set(first.current, { xPercent: xPercent });
+    }
+    if (second.current) {
+      gsap.set(second.current, { xPercent: xPercent });
+    }
 
     requestAnimationFrame(animate);
     xPercent += 0.1 * direction;

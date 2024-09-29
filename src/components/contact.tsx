@@ -111,9 +111,13 @@ function Contact(props: {
           onChange={(e) => setMessage(e.target.value)}
         />
         <div className={style.btnContainer}>
-          <button type="submit" className={style.btn}>
+          <motion.button
+            whileHover={{ scale: 1.2 }}
+            type="submit"
+            className={style.btn}
+          >
             전송
-          </button>
+          </motion.button>
         </div>
       </form>
     </div>

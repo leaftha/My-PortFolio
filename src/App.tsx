@@ -12,7 +12,7 @@ function App() {
   return (
     <div className={end ? `${style.main} ${style.active}` : style.main}>
       <IsClickProvider>
-        <Header />
+        {/* <Header /> */}
         <Introduce />
       </IsClickProvider>
       <MySkils />

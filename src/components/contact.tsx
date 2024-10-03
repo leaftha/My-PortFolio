@@ -7,14 +7,19 @@ import {
   useTransform,
   useInView,
 } from "framer-motion";
+import Fireworks from "react-canvas-confetti/dist/presets/fireworks";
+import Confetti from "./cofetti";
+import { CreateTypes } from "canvas-confetti";
 
 function Contact(props: {
   setEnd: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
-  const comportent = useRef(null);
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [message, setMessage] = useState("");
+  const [isAnimationEnabled, setIsAnimationEnabled] = useState(false);
+  const animationInstanceRef = useRef<CreateTypes | null>(null);
+  const comportent = useRef<HTMLDivElement>(null);
+  const [name, setName] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
   const isView = useInView(comportent);
   const { scrollYProgress } = useScroll({
     target: comportent,
@@ -28,7 +33,6 @@ function Contact(props: {
     formData.append("name", name);
     formData.append("phone", phone);
     formData.append("message", message);
-
     if (name.length !== 0 && phone.length !== 0 && message.length !== 0) {
       fetch(
         "https://script.google.com/macros/s/AKfycbyBl2GxvvVINsHW_8gZwJweaTHAoc2gp90iEaWxVOc-h88vOamPKgb5CoJujy__VcobxQ/exec",
@@ -53,23 +57,24 @@ function Contact(props: {
       alert("빈칸을 채워주세요");
     }
   }
+
   const xPos = useTransform(scrollYProgress, [0, 1], [0, -1200]);
   const springX = useSpring(xPos, { stiffness: 100, damping: 20 });
   const titleText = useTransform(
     scrollYProgress,
     [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
     [
-      "Contáctame", // 스페인어
-      "Kontaktieren Sie mich", // 독일어
-      "Contactez-moi", // 프랑스어
-      "Contattami", // 이탈리아어
-      "Свяжитесь со мной", // 러시아어
-      "연락하기", // 한국어
-      "Contate-me", // 포르투갈어
-      "お問い合わせ", // 일본어
-      "İletişime geç", // 터키어
-      "Liên hệ với tôi", // 베트남어
-      "Contact Me", // 영어
+      "Contáctame",
+      "Kontaktieren Sie mich",
+      "Contactez-moi",
+      "Contattami",
+      "Свяжитесь со мной",
+      "연락하기",
+      "Contate-me",
+      "お問い合わせ",
+      "İletişime geç",
+      "Liên hệ với tôi",
+      "Contact Me",
     ]
   );
 
@@ -79,6 +84,57 @@ function Contact(props: {
     props.setEnd(false);
   }
 
+  const makeShot = (particleRatio: number, opts: object) => {
+    if (animationInstanceRef.current) {
+      animationInstanceRef.current({
+        ...opts,
+        origin: { y: 0.8 },
+        particleCount: Math.floor(200 * particleRatio),
+      });
+    }
+  };
+
+  const fire = () => {
+    makeShot(0.25, {
+      spread: 200,
+      startVelocity: 55,
+    });
+
+    makeShot(0.2, {
+      spread: 50,
+    });
+
+    makeShot(0.35, {
+      spread: 100,
+      decay: 0.91,
+      scalar: 0.8,
+    });
+
+    makeShot(0.1, {
+      spread: 120,
+      startVelocity: 25,
+      decay: 0.92,
+      scalar: 1.2,
+    });
+
+    makeShot(0.1, {
+      spread: 120,
+      startVelocity: 45,
+    });
+  };
+
+  const handlerFire = () => {
+    if (!isAnimationEnabled) {
+      setIsAnimationEnabled(true);
+    }
+    requestAnimationFrame(fire);
+    fire();
+  };
+
+  const getInstance = (instance: CreateTypes | null) => {
+    animationInstanceRef.current = instance;
+  };
+
   return (
     <div className={style.main} ref={comportent}>
       <div className={style.titleContainer}>
@@ -86,7 +142,6 @@ function Contact(props: {
           {titleText}
         </motion.h1>
       </div>
-
       <form className={style.forms} onSubmit={formHandler}>
         <div className={style.formContent}>
           <label className={style.formTitle}>이름</label>
@@ -112,6 +167,7 @@ function Contact(props: {
         />
         <div className={style.btnContainer}>
           <motion.button
+            onClick={handlerFire}
             whileHover={{ scale: 1.2 }}
             type="submit"
             className={style.btn}
@@ -120,6 +176,7 @@ function Contact(props: {
           </motion.button>
         </div>
       </form>
+      <Confetti refConfetti={getInstance} className="canvas" />
     </div>
   );
 }

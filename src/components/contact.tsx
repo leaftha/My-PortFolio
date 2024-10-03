@@ -7,7 +7,6 @@ import {
   useTransform,
   useInView,
 } from "framer-motion";
-import Fireworks from "react-canvas-confetti/dist/presets/fireworks";
 import Confetti from "./cofetti";
 import { CreateTypes } from "canvas-confetti";
 

@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
 
-html {
-  font-size: 16px; /* 기본 글자 크기 설정 */
-}
-
 .headerDiv {
   position: fixed;
   height: 100vh;
@@ -39,27 +35,26 @@ html {
   text-align: center;
 }
 
-/* 유동적인 글자 크기 설정 */
 @media (max-width: 1200px) {
   .headerDiv {
-    font-size: 2em; /* 80px에 해당 */
+    font-size: 2em;
   }
 }
 
 @media (max-width: 992px) {
   .headerDiv {
-    font-size: 1.5em; /* 60px에 해당 */
+    font-size: 1.5em;
   }
 }
 
 @media (max-width: 768px) {
   .headerDiv {
-    font-size: 1.5em; /* 40px에 해당 */
+    font-size: 1.5em;
   }
 }
 
 @media (max-width: 576px) {
   .headerDiv {
-    font-size: 1em; /* 30px에 해당 */
+    font-size: 1em;
   }
 }

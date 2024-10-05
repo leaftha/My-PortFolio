@@ -28,9 +28,7 @@
 
 .text {
   font-family: "Noto Sans KR", sans-serif;
-
-  /* color: #ffffff; */
-  font-size: 32px;
+  font-size: 2em;
   line-height: 55px;
 }
 

@@ -8,15 +8,20 @@ import {
   useTransform,
 } from "framer-motion";
 import { IsClickContext } from "./isClickedContext";
-import { useContext, useRef } from "react";
+import { useContext, useRef, useEffect, useState } from "react";
+import MySkils from "./mySkils";
 
 function Introduce() {
   const clicked = useContext(IsClickContext);
-  const introduce = useRef(null);
+  const introduce = useRef<HTMLDivElement>(null);
+  const mySkillsRef = useRef<HTMLDivElement>(null);
+  const [length, setLength] = useState(0);
+
   const isView = useInView(introduce);
   const { scrollY } = useScroll({
     target: introduce,
   });
+
   const description: string[] = [
     "안녕하세요.",
     "만드는 것을 좋아하는 개발자 피세찬입니다.",
@@ -40,41 +45,55 @@ function Introduce() {
     },
   };
 
-  const yPos = useTransform(scrollY, [0, 1100], [0, 1100]);
+  useEffect(() => {
+    if (introduce.current && mySkillsRef.current) {
+      const introduceRect = introduce.current.getBoundingClientRect();
+      const mySkillsRect = mySkillsRef.current.getBoundingClientRect();
+      const totalLength = mySkillsRect.bottom - introduceRect.top;
+      setLength(totalLength);
+    }
+  }, [isView]);
+
+  const yPos = useTransform(scrollY, [0, length - 800], [0, length - 800]);
   const springY = useSpring(yPos, { stiffness: 100, damping: 20 });
 
   return (
-    <div ref={introduce} className={style.body}>
-      <div className={style.introduce}>
-        <motion.img
-          style={{ y: springY }}
-          transition={{ type: "spring" }}
-          className={style.profileImg}
-          src={`${process.env.PUBLIC_URL}/image/profile.jpg`}
-        />
-        <div className={style.text}>
-          {description.map((line, idx) => (
-            <p key={idx}>
-              {line.split("").map((word, idx) => {
-                return (
-                  <span key={idx} className={style.mask}>
-                    <motion.span
-                      variants={slideUp}
-                      custom={idx}
-                      animate={clicked?.isClick && isView ? "open" : "closed"}
-                      key={idx}
-                    >
-                      {word}
-                    </motion.span>
-                  </span>
-                );
-              })}
-            </p>
-          ))}
+    <>
+      <div ref={introduce} className={style.body}>
+        <div className={style.introduce}>
+          <motion.img
+            style={{ y: springY }}
+            transition={{ type: "spring" }}
+            className={style.profileImg}
+            src={`${process.env.PUBLIC_URL}/image/profile.jpg`}
+          />
+          <div className={style.text}>
+            {description.map((line, idx) => (
+              <p key={idx}>
+                {line.split("").map((word, idx) => {
+                  return (
+                    <span key={idx} className={style.mask}>
+                      <motion.span
+                        variants={slideUp}
+                        custom={idx}
+                        animate={clicked?.isClick && isView ? "open" : "closed"}
+                        key={idx}
+                      >
+                        {word}
+                      </motion.span>
+                    </span>
+                  );
+                })}
+              </p>
+            ))}
+          </div>
         </div>
+        <IntroduceTitle />
       </div>
-      <IntroduceTitle />
-    </div>
+      <div ref={mySkillsRef}>
+        <MySkils />
+      </div>
+    </>
   );
 }
 

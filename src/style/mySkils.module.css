@@ -55,3 +55,7 @@
   cursor: pointer;
   border-radius: 20%;
 }
+
+.hyper {
+  text-decoration: underline;
+}

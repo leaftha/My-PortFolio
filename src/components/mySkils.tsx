@@ -54,6 +54,7 @@ function MySkils() {
         <p>동서대학교 재학중(2020년 입학 ~ 2026년 졸업예정)</p>
         <p>Email : vltpcks@gmail.com</p>
         <p
+          className={style.hyper}
           onClick={() => {
             window.open("https://solved.ac/profile/vltpcks");
           }}
@@ -61,6 +62,7 @@ function MySkils() {
           백준
         </p>
         <p
+          className={style.hyper}
           onClick={() => {
             window.open("https://github.com/leaftha");
           }}
@@ -73,11 +75,7 @@ function MySkils() {
         <div className={style.skilGrid} ref={skilRef}>
           {skils.map((skil, idx) => (
             <motion.div
-              drag
               key={skil.skil}
-              dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-              dragTransition={{ bounceStiffness: 500, bounceDamping: 20 }}
-              dragElastic={1}
               whileHover={{ scale: 1.2, transition: { duration: 0.1 } }}
               variants={cardVariants}
               custom={idx}

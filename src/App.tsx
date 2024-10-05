@@ -9,6 +9,7 @@ import { useState } from "react";
 
 function App() {
   const [end, setEnd] = useState(false);
+
   return (
     <div className={end ? `${style.main} ${style.active}` : style.main}>
       <IsClickProvider>

@@ -1,33 +1,12 @@
 import style from "../style/header.module.css";
 import { motion } from "framer-motion";
-import ScrollBtn from "./ScrollBtn";
 import { IsClickContext } from "./isClickedContext";
-import { useContext, useEffect } from "react";
+import { useContext, useRef } from "react";
 import { UpRolling, slideUp } from "../util/ani";
 
 function Header() {
+  const intro = useRef(null);
   const clicked = useContext(IsClickContext);
-
-  useEffect(() => {
-    const lockScroll = () => {
-      document.body.style.overflow = "hidden";
-    };
-
-    const unlockScroll = () => {
-      document.body.style.overflow = "auto";
-      document.body.style.overflowX = "hidden";
-    };
-
-    if (clicked?.isClick) {
-      unlockScroll();
-    } else {
-      lockScroll();
-    }
-
-    return () => {
-      unlockScroll();
-    };
-  }, [clicked?.isClick]);
 
   const str: string[] = [
     "M",
@@ -46,6 +25,7 @@ function Header() {
 
   return (
     <motion.div
+      ref={intro}
       className={style.headerDiv}
       variants={slideUp}
       initial="initial"
@@ -60,13 +40,17 @@ function Header() {
               initial="first"
               animate="animation"
               transition={{ type: "spring" }}
+              onAnimationComplete={() => {
+                if (idx === str.length - 1 && !clicked?.isClick) {
+                  clicked?.setIsClick(true);
+                }
+              }}
             >
               {word}
             </motion.p>
           </div>
         ))}
       </div>
-      <ScrollBtn isClick={clicked?.setIsClick} />
     </motion.div>
   );
 }

@@ -23,7 +23,6 @@
 }
 .history p:last-child {
   cursor: pointer;
-  border-bottom: 1px solid #111111;
 }
 .skilContainer {
   display: flex;

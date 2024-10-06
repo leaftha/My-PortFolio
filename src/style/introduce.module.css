@@ -23,6 +23,7 @@
   width: 500px;
   height: 700px;
   cursor: pointer;
+  margin-left: 50px;
   margin-right: 150px;
   -webkit-user-drag: none;
 }

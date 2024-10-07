@@ -3,7 +3,7 @@
 .main {
   width: 100%;
   display: flex;
-  margin: 100px 0;
+  margin: 6.25em 0;
 }
 
 .container {
@@ -17,13 +17,12 @@
 }
 .titles p {
   font-family: "Noto Serif", serif;
-
   position: relative;
   margin: 0px;
   color: black;
   font-size: 12.5em;
   font-weight: 500;
-  padding-right: 50px;
+  padding-right: 3.125em;
 }
 
 .titles p:nth-of-type(2) {

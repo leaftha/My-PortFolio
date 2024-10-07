@@ -6,7 +6,8 @@
   display: flex;
   font-family: "Noto Sans KR", sans-serif;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
+  margin-left: 40em;
   justify-content: center;
 }
 
@@ -27,8 +28,9 @@
 .skilContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center; */
+  width: 10%;
+  /* justify-content: center; */
 }
 
 .skilTitle {

@@ -67,7 +67,6 @@
     grid-template-columns: 1fr;
   }
   .profileImg {
-    margin-right: 50%;
   }
   .text {
     display: flex;

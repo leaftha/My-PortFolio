@@ -1,5 +1,5 @@
 import style from "../style/contact.module.css";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   motion,
   useSpring,
@@ -16,6 +16,7 @@ function Contact(props: {
   const [isAnimationEnabled, setIsAnimationEnabled] = useState(false);
   const animationInstanceRef = useRef<CreateTypes | null>(null);
   const comportent = useRef<HTMLDivElement>(null);
+  const [leftdistance, setLeftdistance] = useState<number>(-1200);
   const [name, setName] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const [message, setMessage] = useState<string>("");
@@ -24,6 +25,17 @@ function Contact(props: {
     target: comportent,
     offset: ["start end", "end end"],
   });
+
+  useEffect(() => {
+    const update = () => {
+      const width = window.innerWidth;
+      setLeftdistance(-(width - width / 2));
+    };
+    update();
+    window.addEventListener("resize", update);
+
+    return () => window.addEventListener("resize", update);
+  }, []);
 
   function formHandler(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -57,7 +69,7 @@ function Contact(props: {
     }
   }
 
-  const xPos = useTransform(scrollYProgress, [0, 1], [0, -1200]);
+  const xPos = useTransform(scrollYProgress, [0, 1], [0, leftdistance]);
   const springX = useSpring(xPos, { stiffness: 100, damping: 20 });
   const titleText = useTransform(
     scrollYProgress,

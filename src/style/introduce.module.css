@@ -64,13 +64,11 @@
 
 @media (max-width: 576px) {
   .introduce {
+    display: flex;
+    flex-direction: column;
     grid-template-columns: 1fr;
   }
   .profileImg {
-  }
-  .text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin: 0;
   }
 }

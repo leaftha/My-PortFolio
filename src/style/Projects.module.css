@@ -12,7 +12,7 @@
 
 .title {
   font-family: "Noto Serif", serif;
-  font-size: 12.5em;
+  font-size: 10em;
   font-weight: bold;
 }
 
@@ -54,7 +54,8 @@ border-radius: 10px;
 
 .contents {
   line-height: 3.125em;
-  width: 60vw;
+  width: 100vw;
+  height: 100vh;
 }
 .projectTitle {
   font-family: "Noto Serif", serif;
@@ -85,6 +86,7 @@ border-radius: 10px;
 .contents p {
   font-family: "Noto Sans KR", sans-serif;
   font-size: 1.125em;
+  width: 60%;
   white-space: pre-line;
   line-height: 2.5em;
   color: #868e96;

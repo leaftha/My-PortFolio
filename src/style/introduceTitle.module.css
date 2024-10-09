@@ -8,7 +8,7 @@
 
 .container {
   position: absolute;
-  top: calc(110vh - 350px);
+  top: calc(110vh - 17em);
 }
 
 .titles {

@@ -16,7 +16,7 @@
   flex-direction: column;
   font-size: 1.8em;
   line-height: 1.8125em;
-  margin: 50px 0;
+  margin: 2.125em 0;
 }
 
 .history p:nth-child(6) {
@@ -57,4 +57,11 @@
 
 .hyper {
   text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .main {
+    margin: 0;
+    align-items: center;
+  }
 }

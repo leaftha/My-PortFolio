@@ -3,6 +3,7 @@
 .main {
   width: 100%;
   display: flex;
+
   margin: 6.25em 0;
 }
 
@@ -22,12 +23,14 @@
   color: black;
   font-size: 12.5em;
   font-weight: 500;
+
   padding-right: 3.125em;
 }
 
 .titles p:nth-of-type(2) {
   position: absolute;
   left: 100%;
+
   top: 0;
 }
 .mask {

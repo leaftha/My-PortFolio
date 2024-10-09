@@ -99,7 +99,7 @@ function Introduce() {
             ))}
           </div>
         </div>
-        <IntroduceTitle />
+        {width >= 758 && <IntroduceTitle />}
       </div>
       <div ref={mySkillsRef}>
         <MySkils />

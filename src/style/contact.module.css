@@ -9,6 +9,7 @@
   height: 100vh;
   margin-top: 50vh;
   border-top: 1px solid #ced4da;
+  overflow-x: hidden;
 }
 
 .titleContainer {

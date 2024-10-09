@@ -16,11 +16,31 @@ function Introduce() {
   const introduce = useRef<HTMLDivElement>(null);
   const mySkillsRef = useRef<HTMLDivElement>(null);
   const [length, setLength] = useState(0);
+  const [width, setWidth] = useState<number>(0);
 
   const isView = useInView(introduce);
   const { scrollY } = useScroll({
     target: introduce,
   });
+
+  useEffect(() => {
+    const update = () => {
+      const width = window.innerWidth;
+      setWidth(width);
+    };
+    update();
+    window.addEventListener("resize", update);
+
+    return () => window.addEventListener("resize", update);
+  }, []);
+  useEffect(() => {
+    if (introduce.current && mySkillsRef.current) {
+      const introduceRect = introduce.current.getBoundingClientRect();
+      const mySkillsRect = mySkillsRef.current.getBoundingClientRect();
+      const totalLength = mySkillsRect.bottom - introduceRect.top;
+      setLength(totalLength);
+    }
+  }, [isView]);
 
   const description: string[] = [
     "안녕하세요.",
@@ -45,15 +65,6 @@ function Introduce() {
     },
   };
 
-  useEffect(() => {
-    if (introduce.current && mySkillsRef.current) {
-      const introduceRect = introduce.current.getBoundingClientRect();
-      const mySkillsRect = mySkillsRef.current.getBoundingClientRect();
-      const totalLength = mySkillsRect.bottom - introduceRect.top;
-      setLength(totalLength);
-    }
-  }, [isView]);
-
   const yPos = useTransform(scrollY, [0, length - 800], [0, length - 800]);
   const springY = useSpring(yPos, { stiffness: 100, damping: 20 });
 
@@ -62,7 +73,7 @@ function Introduce() {
       <div ref={introduce} className={style.body}>
         <div className={style.introduce}>
           <motion.img
-            style={{ y: springY }}
+            style={width >= 758 ? { y: springY } : undefined}
             transition={{ type: "spring" }}
             className={style.profileImg}
             src={`${process.env.PUBLIC_URL}/image/profile.jpg`}

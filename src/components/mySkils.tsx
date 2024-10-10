@@ -61,6 +61,7 @@ function MySkils() {
         >
           백준
         </p>
+        <br />
         <p
           className={style.hyper}
           onClick={() => {

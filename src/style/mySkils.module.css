@@ -14,15 +14,20 @@
 .history {
   display: flex;
   flex-direction: column;
+  display: inline-block;
   font-size: 1.8em;
   line-height: 1.8125em;
   margin: 2.125em 0;
 }
 
 .history p:nth-child(6) {
+  display: inline-block;
   cursor: pointer;
 }
+
 .history p:last-child {
+  display: inline-block;
+
   cursor: pointer;
 }
 .skilContainer {

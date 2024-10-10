@@ -73,17 +73,12 @@ function Contact(props: {
   const springX = useSpring(xPos, { stiffness: 100, damping: 20 });
   const titleText = useTransform(
     scrollYProgress,
-    [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+    [0, 0.1, 0.4, 0.6, 0.8, 1],
     [
       "Contáctame",
-      "Kontaktieren Sie mich",
-      "Contactez-moi",
-      "Contattami",
       "Свяжитесь со мной",
       "연락하기",
-      "Contate-me",
       "お問い合わせ",
-      "İletişime geç",
       "Liên hệ với tôi",
       "Contact Me",
     ]

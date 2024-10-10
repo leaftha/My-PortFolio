@@ -55,14 +55,14 @@ border-radius: 10px;
 .contents {
   line-height: 3.125em;
   width: 100vw;
-  /* height: 100vh; */
+  margin: 0 6.25em;
 }
 .projectTitle {
   font-family: "Noto Serif", serif;
   display: inline-block;
   margin: 1.25em 0;
   position: relative;
-  font-size: 0.75em;
+  font-size: 2.75em;
 }
 
 .projectTitle::before {
@@ -86,7 +86,7 @@ border-radius: 10px;
 .contents p {
   font-family: "Noto Sans KR", sans-serif;
   font-size: 1.125em;
-  width: 60%;
+  width: 100%;
   white-space: pre-line;
   line-height: 2.5em;
   color: #868e96;

@@ -69,6 +69,6 @@
     grid-template-columns: 1fr;
   }
   .profileImg {
-    margin: 0;
+    margin: 0 0 4em 0;
   }
 }

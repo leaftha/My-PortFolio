@@ -31,7 +31,12 @@
   justify-content: center;
   font-family: "Noto Serif", serif;
   font-weight: bold;
-
   color: #ffffff;
   text-align: center;
+}
+
+@media (max-width: 768px) {
+  .headerDiv {
+    font-size: 1.5em;
+  }
 }

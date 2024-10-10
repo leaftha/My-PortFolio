@@ -29,7 +29,7 @@ function Contact(props: {
   useEffect(() => {
     const update = () => {
       const width = window.innerWidth;
-      setLeftdistance(-width / 2.6);
+      setLeftdistance(-width / 2.5);
     };
     update();
     window.addEventListener("resize", update);

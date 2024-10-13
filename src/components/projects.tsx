@@ -27,7 +27,6 @@ function Projects() {
   const [active, setActive] = useState(false);
   const { scrollYProgress } = useScroll({ target: projectBody });
 
-  // MotionValue을 일반 숫자로 변환하기 위한 상태 변수
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const index = useTransform(
@@ -37,12 +36,11 @@ function Projects() {
   );
 
   useEffect(() => {
-    // index 값이 변경될 때마다 currentIndex 상태 업데이트
     const unsubscribe = index.onChange((latest) => {
-      setCurrentIndex(Math.round(latest)); // 필요한 경우 소수점 반올림
+      setCurrentIndex(Math.round(latest));
     });
 
-    return () => unsubscribe(); // 컴포넌트 언마운트 시 구독 해제
+    return () => unsubscribe();
   }, [index]);
 
   useEffect(() => {
@@ -85,7 +83,7 @@ function Projects() {
         <h1 className={style.title}>My Projects</h1>
         <div className={style.Projects}>
           <div className={style.projectsbody}>
-            <motion.div className={style.contents}>
+            <div className={style.contents}>
               <motion.h1
                 className={`${style.projectTitle} ${
                   projects[currentIndex]?.img.length !== 0 && style.under
@@ -148,7 +146,7 @@ function Projects() {
                 <span className={style.projectDescriptionTitle}>소감:</span>
                 {projects[currentIndex]?.description.feedback}
               </p>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

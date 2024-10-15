@@ -83,7 +83,13 @@ function Projects() {
         <h1 className={style.title}>My Projects</h1>
         <div className={style.Projects}>
           <div className={style.projectsbody}>
-            <div className={style.contents}>
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className={style.contents}
+            >
               <motion.h1
                 className={`${style.projectTitle} ${
                   projects[currentIndex]?.img.length !== 0 && style.under
@@ -146,7 +152,7 @@ function Projects() {
                 <span className={style.projectDescriptionTitle}>소감:</span>
                 {projects[currentIndex]?.description.feedback}
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

@@ -31,7 +31,7 @@ function Projects() {
 
   const index = useTransform(
     scrollYProgress,
-    [0, 0.2, 0.6, 0.8, 1],
+    [0, 0.4, 0.6, 0.8, 1],
     [0, 1, 2, 3, 4]
   );
 
@@ -83,13 +83,7 @@ function Projects() {
         <h1 className={style.title}>My Projects</h1>
         <div className={style.Projects}>
           <div className={style.projectsbody}>
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className={style.contents}
-            >
+            <motion.div key={currentIndex} className={style.contents}>
               <motion.h1
                 className={`${style.projectTitle} ${
                   projects[currentIndex]?.img.length !== 0 && style.under
@@ -107,51 +101,56 @@ function Projects() {
               >
                 {projects[currentIndex]?.name}
               </motion.h1>
-              <br />
-              <p
-                className={style.git}
-                onClick={() => {
-                  window.open(projects[currentIndex]?.git);
-                }}
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2, delay: 0.1 }}
               >
-                {projects[currentIndex]?.git}
-              </p>
-              <p>
-                <span className={style.projectDescriptionTitle}>기간:</span>
-                {projects[currentIndex]?.time}
-              </p>
-              <p>
-                <span className={style.projectDescriptionTitle}>역활:</span>
-                {projects[currentIndex]?.description.role}
-              </p>
-              <p>
-                <span className={style.projectDescriptionTitle}>
-                  사용 기술:
-                </span>
-                {projects[currentIndex]?.description.tech}
-              </p>
-              <p>
-                <span className={style.projectDescriptionTitle}>
-                  프로젝트 설명:
-                </span>
-                {projects[currentIndex]?.description.projectDescription}
-              </p>
-              <p>
-                <span className={style.projectDescriptionTitle}>
-                  구체적인 기술적 도전:
-                </span>
-                {projects[currentIndex]?.description.challenge}
-              </p>
-              <p>
-                <span className={style.projectDescriptionTitle}>
-                  해결 과정:
-                </span>
-                {projects[currentIndex]?.description.solution}
-              </p>
-              <p>
-                <span className={style.projectDescriptionTitle}>소감:</span>
-                {projects[currentIndex]?.description.feedback}
-              </p>
+                <p
+                  className={style.git}
+                  onClick={() => window.open(projects[currentIndex]?.git)}
+                >
+                  {projects[currentIndex]?.git}
+                </p>
+                <p>
+                  <span className={style.projectDescriptionTitle}>기간:</span>
+                  {projects[currentIndex]?.time}
+                </p>
+                <p>
+                  <span className={style.projectDescriptionTitle}>역할:</span>
+                  {projects[currentIndex]?.description.role}
+                </p>
+                <p>
+                  <span className={style.projectDescriptionTitle}>
+                    사용 기술:
+                  </span>
+                  {projects[currentIndex]?.description.tech}
+                </p>
+                <p>
+                  <span className={style.projectDescriptionTitle}>
+                    프로젝트 설명:
+                  </span>
+                  {projects[currentIndex]?.description.projectDescription}
+                </p>
+                <p>
+                  <span className={style.projectDescriptionTitle}>
+                    구체적인 기술적 도전:
+                  </span>
+                  {projects[currentIndex]?.description.challenge}
+                </p>
+                <p>
+                  <span className={style.projectDescriptionTitle}>
+                    해결 과정:
+                  </span>
+                  {projects[currentIndex]?.description.solution}
+                </p>
+                <p>
+                  <span className={style.projectDescriptionTitle}>소감:</span>
+                  {projects[currentIndex]?.description.feedback}
+                </p>
+              </motion.div>
             </motion.div>
           </div>
         </div>

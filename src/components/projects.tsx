@@ -102,55 +102,89 @@ function Projects() {
                 {projects[currentIndex]?.name}
               </motion.h1>
 
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2, delay: 0.1 }}
-              >
-                <p
+              <div>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2, delay: 0.3 }}
                   className={style.git}
                   onClick={() => window.open(projects[currentIndex]?.git)}
                 >
                   {projects[currentIndex]?.git}
-                </p>
-                <p>
+                </motion.p>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2, delay: 0.5 }}
+                >
                   <span className={style.projectDescriptionTitle}>기간:</span>
                   {projects[currentIndex]?.time}
-                </p>
-                <p>
+                </motion.p>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2, delay: 0.7 }}
+                >
                   <span className={style.projectDescriptionTitle}>역할:</span>
                   {projects[currentIndex]?.description.role}
-                </p>
-                <p>
+                </motion.p>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2, delay: 0.9 }}
+                >
                   <span className={style.projectDescriptionTitle}>
                     사용 기술:
                   </span>
                   {projects[currentIndex]?.description.tech}
-                </p>
-                <p>
+                </motion.p>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2, delay: 1.1 }}
+                >
                   <span className={style.projectDescriptionTitle}>
                     프로젝트 설명:
                   </span>
                   {projects[currentIndex]?.description.projectDescription}
-                </p>
-                <p>
+                </motion.p>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2, delay: 1.3 }}
+                >
                   <span className={style.projectDescriptionTitle}>
                     구체적인 기술적 도전:
                   </span>
                   {projects[currentIndex]?.description.challenge}
-                </p>
-                <p>
+                </motion.p>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2, delay: 1.5 }}
+                >
                   <span className={style.projectDescriptionTitle}>
                     해결 과정:
                   </span>
                   {projects[currentIndex]?.description.solution}
-                </p>
-                <p>
+                </motion.p>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2, delay: 1.7 }}
+                >
                   <span className={style.projectDescriptionTitle}>소감:</span>
                   {projects[currentIndex]?.description.feedback}
-                </p>
-              </motion.div>
+                </motion.p>
+              </div>
             </motion.div>
           </div>
         </div>

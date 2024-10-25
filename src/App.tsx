@@ -4,6 +4,7 @@ import Introduce from "./components/introduce";
 import { IsClickProvider } from "./components/isClickedContext";
 import Projects from "./components/projects";
 import Contact from "./components/contact";
+import ProjectsStart from "./components/projectsStart";
 import { useState } from "react";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Header />
         <Introduce />
       </IsClickProvider>
+      <ProjectsStart />
       <Projects />
       <Contact setEnd={setEnd} />
     </div>

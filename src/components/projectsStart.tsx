@@ -41,7 +41,12 @@ function ProjectsStart() {
       <div className={style.imgContianer} ref={imgContainerRef}>
         <motion.img
           initial={{ scale: 1 }}
-          animate={isTop ? { scale: 0.8 } : { scale: 1 }}
+          animate={
+            isTop
+              ? { scale: 0.8, borderRadius: 60 }
+              : { scale: 1, borderRadius: 0 }
+          }
+          transition={{ duration: 0.2 }}
           className={style.img}
           style={{ width: width }}
           src={`${process.env.PUBLIC_URL}/image/diet-record.jpg`}

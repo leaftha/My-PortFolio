@@ -80,7 +80,6 @@ function Projects() {
   return (
     <>
       <div className={style.main} ref={projectBody}>
-        <h1 className={style.title}>My Projects</h1>
         <div className={style.Projects}>
           <div className={style.projectsbody}>
             <motion.div key={currentIndex} className={style.contents}>

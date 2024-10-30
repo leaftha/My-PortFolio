@@ -78,12 +78,14 @@ function Modal(props: { modal: { active: boolean; idx: number } }) {
         className={style.modalContainer}
       >
         <div className={style.modalSlider}>
-          <img
-            src={projects[props.modal.idx].img}
-            width={300}
-            height={0}
-            alt={projects[props.modal.idx].name}
-          />
+          <div className={style.modal}>
+            <img
+              src={projects[props.modal.idx].img}
+              width={300}
+              height={0}
+              alt={projects[props.modal.idx].name}
+            />
+          </div>
         </div>
       </motion.div>
       <motion.div

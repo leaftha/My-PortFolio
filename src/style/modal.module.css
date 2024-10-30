@@ -13,17 +13,7 @@
 .modalSlider {
   height: 100%;
   width: 100%;
-  position: absolute;
 }
-
-.modal {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .modal img {
   height: auto;
 }

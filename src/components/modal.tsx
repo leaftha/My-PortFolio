@@ -67,6 +67,7 @@ function Modal(props: { modal: { active: boolean; idx: number } }) {
       window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
+  console.log(projects[props.modal.idx].img);
   return (
     <>
       <motion.div
@@ -78,9 +79,7 @@ function Modal(props: { modal: { active: boolean; idx: number } }) {
       >
         <div className={style.modalSlider}>
           <img
-            src={`${process.env.PUBLIC_URL}/image/${
-              projects[props.modal.idx].img
-            }`}
+            src={projects[props.modal.idx].img}
             width={300}
             height={0}
             alt={projects[props.modal.idx].name}

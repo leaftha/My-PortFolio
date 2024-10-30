@@ -1,30 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
 import style from "../style/Projects.module.css";
 import { motion, useTransform, useScroll } from "framer-motion";
 import { projects } from "../util/project";
-
-const scaleAnimation = {
-  initial: { scale: 0, x: "-50%", y: "-50%" },
-  open: {
-    scale: 1,
-    x: "-50%",
-    y: "-50%",
-    transition: { duration: 0.4, ease: [0.76, 0, 0.24, 1] },
-  },
-  closed: {
-    scale: 0,
-    x: "-50%",
-    y: "-50%",
-    transition: { duration: 0.4, ease: [0.32, 0, 0.67, 0] },
-  },
-};
+import Modal from "./modal";
 
 function Projects() {
-  const cursor = useRef<HTMLDivElement | null>(null);
-  const cursorLabel = useRef<HTMLDivElement | null>(null);
   const projectBody = useRef<HTMLDivElement | null>(null);
-  const [active, setActive] = useState(false);
+  const [modal, setModal] = useState({ active: false, idx: 0 });
   const { scrollYProgress } = useScroll({ target: projectBody });
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -43,43 +25,10 @@ function Projects() {
     return () => unsubscribe();
   }, [index]);
 
-  useEffect(() => {
-    const moveCursorX = gsap.quickTo(cursor.current, "left", {
-      duration: 0.5,
-      ease: "power3",
-    });
-    const moveCursorY = gsap.quickTo(cursor.current, "top", {
-      duration: 0.5,
-      ease: "power3",
-    });
-    const moveCursorLabelX = gsap.quickTo(cursorLabel.current, "left", {
-      duration: 0.45,
-      ease: "power3",
-    });
-    const moveCursorLabelY = gsap.quickTo(cursorLabel.current, "top", {
-      duration: 0.45,
-      ease: "power3",
-    });
-
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!cursor.current || !cursorLabel.current) return;
-      const { clientX, clientY } = e;
-      moveCursorX(clientX);
-      moveCursorY(clientY);
-      moveCursorLabelX(clientX);
-      moveCursorLabelY(clientY);
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
-
   return (
     <>
       <div className={style.main} ref={projectBody}>
+        <h1 className={style.title}>My Projects</h1>
         <div className={style.Projects}>
           <div className={style.projectsbody}>
             <motion.div key={currentIndex} className={style.contents}>
@@ -88,10 +37,12 @@ function Projects() {
                   projects[currentIndex]?.img.length !== 0 && style.under
                 }`}
                 onHoverStart={() => {
-                  projects[currentIndex]?.img.length !== 0 && setActive(true);
+                  projects[currentIndex]?.img.length !== 0 &&
+                    setModal({ active: true, idx: currentIndex });
                 }}
                 onHoverEnd={() => {
-                  projects[currentIndex]?.img.length !== 0 && setActive(false);
+                  projects[currentIndex]?.img.length !== 0 &&
+                    setModal({ active: false, idx: currentIndex });
                 }}
                 onClick={() => {
                   projects[currentIndex]?.img.length !== 0 &&
@@ -188,22 +139,7 @@ function Projects() {
           </div>
         </div>
       </div>
-      <motion.div
-        ref={cursor}
-        variants={scaleAnimation}
-        initial={"initial"}
-        animate={active ? "open" : "closed"}
-        className={style.cursor}
-      ></motion.div>
-      <motion.div
-        ref={cursorLabel}
-        variants={scaleAnimation}
-        initial={"initial"}
-        animate={active ? "open" : "closed"}
-        className={style.cursorLabel}
-      >
-        View
-      </motion.div>
+      <Modal modal={modal} />
     </>
   );
 }

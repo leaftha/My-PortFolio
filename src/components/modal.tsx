@@ -80,7 +80,7 @@ function Modal(props: { modal: { active: boolean; idx: number } }) {
           <img
             src={`${process.env.PUBLIC_URL}/image/${
               projects[props.modal.idx].img
-            }.jpg`}
+            }`}
             width={300}
             height={0}
             alt={projects[props.modal.idx].name}

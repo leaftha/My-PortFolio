@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import style from "../style/Projects.module.css";
-import { motion, useTransform, useScroll } from "framer-motion";
+import { motion, useTransform, useScroll, useInView } from "framer-motion";
 import { projects } from "../util/project";
+import gsap from "gsap";
 import Modal from "./modal";
+import SplitType from "split-type";
 
 function Projects() {
   const projectBody = useRef<HTMLDivElement | null>(null);
+  const isView = useInView(projectBody);
   const [modal, setModal] = useState({ active: false, idx: 0 });
   const { scrollYProgress } = useScroll({ target: projectBody });
 
@@ -25,6 +28,23 @@ function Projects() {
     return () => unsubscribe();
   }, [index]);
 
+  useEffect(() => {
+    if (isView) {
+      let typeSplit = new SplitType(`.${style.title}`, {
+        types: "lines,words,chars",
+        tagName: "span",
+      });
+
+      gsap.from(`.${style.title} span`, {
+        y: "110%",
+        opacity: 0,
+        rotationZ: "10",
+        duration: 0.4,
+        stagger: 0.1,
+        delay: 0.5,
+      });
+    }
+  }, [isView]);
   return (
     <>
       <div className={style.main} ref={projectBody}>

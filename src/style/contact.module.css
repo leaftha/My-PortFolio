@@ -14,7 +14,7 @@
 
 .titleContainer {
   /* height: 100%; */
-  width: 100%;
+  /* width: 100%; */
   margin: 0 0 6.25em 6.25em;
 }
 
@@ -22,7 +22,7 @@
   font-family: "Noto Serif", "Noto Sans KR", serif;
   font-size: 5.25em;
   font-weight: bold;
-  text-align: right;
+  text-align: center;
   color: #ffffff;
 }
 

@@ -1,12 +1,6 @@
 import style from "../style/contact.module.css";
 import { useEffect, useRef, useState } from "react";
-import {
-  motion,
-  useSpring,
-  useScroll,
-  useTransform,
-  useInView,
-} from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import Confetti from "./cofetti";
 import { CreateTypes } from "canvas-confetti";
 
@@ -16,27 +10,26 @@ function Contact(props: {
   const [isAnimationEnabled, setIsAnimationEnabled] = useState(false);
   const animationInstanceRef = useRef<CreateTypes | null>(null);
   const comportent = useRef<HTMLDivElement>(null);
-  const [leftdistance, setLeftdistance] = useState<number>(-1200);
   const [name, setName] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const [message, setMessage] = useState<string>("");
+  const [index, setIndex] = useState(0);
   const isView = useInView(comportent);
-  const { scrollYProgress } = useScroll({
-    target: comportent,
-    offset: ["start end", "end end"],
-  });
 
   useEffect(() => {
-    const update = () => {
-      const width = window.innerWidth;
-      setLeftdistance(-width / 2.5);
-    };
-    update();
-    window.addEventListener("resize", update);
+    if (isView) {
+      if (index == titleText.length - 1) return;
 
-    return () => window.addEventListener("resize", update);
-  }, []);
-
+      setTimeout(
+        () => {
+          setIndex(index + 1);
+        },
+        index == 0 ? 1000 : 150
+      );
+    } else {
+      setIndex(0);
+    }
+  }, [index, isView]);
   function formHandler(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -69,20 +62,22 @@ function Contact(props: {
     }
   }
 
-  const xPos = useTransform(scrollYProgress, [0, 1], [0, leftdistance]);
-  const springX = useSpring(xPos, { stiffness: 100, damping: 20 });
-  const titleText = useTransform(
-    scrollYProgress,
-    [0, 0.1, 0.4, 0.6, 0.8, 1],
-    [
-      "Contáctame",
-      "Свяжитесь со мной",
-      "연락하기",
-      "お問い合わせ",
-      "Liên hệ với tôi",
-      "Contact Me",
-    ]
-  );
+  const titleText = [
+    "Contáctame", // Spanish
+    "Свяжитесь со мной", // Russian
+    "お問い合わせ", // Japanese
+    "Liên hệ với tôi", // Vietnamese
+    "Contate-me", // Portuguese
+    "연락하기", // Korean
+    "联系我们", // Chinese (Simplified)
+    "İletişime geçin", // Turkish
+    "Kontaktieren Sie mich", // German
+    "Επικοινωνήστε μαζί μου", // Greek
+    "Contactez-moi", // French
+    "Contattami", // Italian
+    "Neem contact met mij op", // Dutch
+    "Contact Me", // English
+  ];
 
   if (isView) {
     props.setEnd(true);
@@ -144,9 +139,7 @@ function Contact(props: {
   return (
     <div className={style.main} ref={comportent}>
       <div className={style.titleContainer}>
-        <motion.h1 style={{ x: springX }} className={style.title}>
-          {titleText}
-        </motion.h1>
+        <motion.h1 className={style.title}>{titleText[index]}</motion.h1>
       </div>
       <form className={style.forms} onSubmit={formHandler}>
         <div className={style.formContent}>

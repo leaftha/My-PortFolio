@@ -7,23 +7,18 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  margin-top: 50vh;
+  /* margin-top: 50vh; */
   border-top: 1px solid #ced4da;
   overflow-x: hidden;
 }
 
-.titleContainer {
-  /* height: 100%; */
-  /* width: 100%; */
-  margin: 0 0 6.25em 6.25em;
-}
-
 .title {
   font-family: "Noto Serif", "Noto Sans KR", serif;
-  font-size: 5.25em;
+  font-size: 4.25em;
   font-weight: bold;
   text-align: center;
   color: #ffffff;
+  margin-bottom: 2em;
 }
 
 .forms {

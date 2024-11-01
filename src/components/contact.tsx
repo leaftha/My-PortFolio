@@ -138,9 +138,7 @@ function Contact(props: {
 
   return (
     <div className={style.main} ref={comportent}>
-      <div className={style.titleContainer}>
-        <motion.h1 className={style.title}>{titleText[index]}</motion.h1>
-      </div>
+      <motion.h1 className={style.title}>{titleText[index]}</motion.h1>
       <form className={style.forms} onSubmit={formHandler}>
         <div className={style.formContent}>
           <label className={style.formTitle}>이름</label>

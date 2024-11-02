@@ -161,7 +161,6 @@ function Projects() {
         </div>
       </div>
       <Modal modal={modal} />
-      <Contact />
     </>
   );
 }

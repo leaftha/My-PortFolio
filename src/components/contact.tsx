@@ -4,9 +4,7 @@ import { motion, useInView } from "framer-motion";
 import Confetti from "./cofetti";
 import { CreateTypes } from "canvas-confetti";
 
-function Contact(props: {
-  setEnd: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
+function Contact() {
   const [isAnimationEnabled, setIsAnimationEnabled] = useState(false);
   const animationInstanceRef = useRef<CreateTypes | null>(null);
   const comportent = useRef<HTMLDivElement>(null);
@@ -78,12 +76,6 @@ function Contact(props: {
     "Neem contact met mij op", // Dutch
     "Contact Me", // English
   ];
-
-  if (isView) {
-    props.setEnd(true);
-  } else {
-    props.setEnd(false);
-  }
 
   const makeShot = (particleRatio: number, opts: object) => {
     if (animationInstanceRef.current) {

@@ -5,6 +5,7 @@ import { projects } from "../util/project";
 import gsap from "gsap";
 import Modal from "./modal";
 import SplitType from "split-type";
+import Contact from "./contact";
 
 function Projects() {
   const projectBody = useRef<HTMLDivElement | null>(null);
@@ -160,6 +161,7 @@ function Projects() {
         </div>
       </div>
       <Modal modal={modal} />
+      <Contact />
     </>
   );
 }

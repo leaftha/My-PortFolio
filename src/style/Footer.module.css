@@ -11,3 +11,9 @@
   height: 800px;
   width: 100%;
 }
+
+@media (max-width: 768px) {
+  .contactWrapper {
+    height: 650px;
+  }
+}

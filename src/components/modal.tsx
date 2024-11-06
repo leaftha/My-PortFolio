@@ -67,7 +67,6 @@ function Modal(props: { modal: { active: boolean; idx: number } }) {
       window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
-  console.log(projects[props.modal.idx].img);
   return (
     <>
       <motion.div

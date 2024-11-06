@@ -12,28 +12,10 @@ function Contact() {
   const [phone, setPhone] = useState<string>("");
   const [message, setMessage] = useState<string>("");
   const [index, setIndex] = useState(0);
-  const [isBottomReached, setIsBottomReached] = useState(false);
   const isView = useInView(comportent);
 
   useEffect(() => {
-    const scrollHandler = () => {
-      const { scrollTop, scrollHeight, clientHeight } =
-        document.documentElement;
-      if (scrollTop + clientHeight >= scrollHeight - 5) {
-        setIsBottomReached(true);
-      } else {
-        setIsBottomReached(false);
-      }
-    };
-
-    window.addEventListener("scroll", scrollHandler);
-
-    return () => {
-      window.removeEventListener("scroll", scrollHandler);
-    };
-  }, []);
-  useEffect(() => {
-    if (isBottomReached) {
+    if (isView) {
       if (index === titleText.length - 1) return;
 
       setTimeout(
@@ -46,7 +28,8 @@ function Contact() {
     if (!isView) {
       setIndex(0);
     }
-  }, [index, isView, isBottomReached]);
+  }, [index, isView]);
+
   function formHandler(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 

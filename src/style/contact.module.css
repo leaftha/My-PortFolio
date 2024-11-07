@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 
 .main {
   display: flex;
@@ -14,7 +14,7 @@
 }
 
 .title {
-  font-family: "Noto Serif", "Noto Sans KR", serif;
+  font-family: "Noto Serif", "Jua", serif;
   font-size: 4.25em;
   font-weight: bold;
   text-align: center;
@@ -37,14 +37,14 @@
 
 .formTitle {
   font-size: 2.5em;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: "Jua", sans-serif;
 }
 .formTitle::after {
   content: ": ";
 }
 .inputs {
   /* height: 100%; */
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: "Jua", sans-serif;
   font-size: 1.875em;
   width: 11.875em;
 }
@@ -52,7 +52,7 @@
 .text {
   font-size: 1.25em;
   margin: 0.625em 0;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: "Jua", sans-serif;
   height: 100%;
 }
 
@@ -70,7 +70,7 @@
   height: 3.125em;
   border-radius: 3em;
   color: #ffffff;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: "Jua", sans-serif;
 
   cursor: pointer;
 }

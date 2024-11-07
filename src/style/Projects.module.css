@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 
 .main {
   display: flex;
@@ -62,7 +62,7 @@ border-radius: 10px;
 
 .projectTitle::before {
   content: "프로젝트: ";
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: "Jua", sans-serif;
 }
 
 .git {
@@ -80,8 +80,8 @@ border-radius: 10px;
 }
 
 .contents p {
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 1.125em;
+  font-family: "Jua", sans-serif;
+  font-size: 1.25em;
   line-height: 2.5em;
   color: #868e96;
 }

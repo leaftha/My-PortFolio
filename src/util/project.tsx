@@ -21,8 +21,9 @@ export const projects: project[] = [
     img: `${process.env.PUBLIC_URL}/image/diet-record.jpg`,
     menber: 1,
     time: "23/06/24 ~ 23/10/11",
-    git: "https://github.com/leaftha/diet-record",
-    address: "https://diet-record.vercel.app/",
+    git: "https://github.com/leaftha/diet-record/tree/Remaster",
+    address:
+      "https://diet-record-0hpq-git-remaster-leafthas-projects.vercel.app/",
     description: {
       role: "프론트엔드, 간단한 백엔드 및 디자인",
       tech: "JavaScript, React, Next.js, MongoDB",

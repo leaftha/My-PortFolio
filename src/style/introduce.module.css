@@ -46,31 +46,15 @@
   display: inline-flex;
 }
 
-@media (max-width: 1200px) {
-  .introduce {
-    grid-template-columns: 0.4fr 1fr;
-  }
-}
-
-@media (max-width: 992px) {
-  .introduce {
-    grid-template-columns: 0.4fr 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .introduce {
-    grid-template-columns: 0.4fr 1fr;
-  }
-}
-
 @media (max-width: 576px) {
   .introduce {
     display: flex;
     flex-direction: column;
     grid-template-columns: 1fr;
   }
+
   .profileImg {
     margin: 0 0 4em 0;
+    position: static;
   }
 }

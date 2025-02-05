@@ -1,12 +1,6 @@
 import style from "../style/introduce.module.css";
 import IntroduceTitle from "./introduceTitle";
-import {
-  motion,
-  useInView,
-  useSpring,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { IsClickContext } from "./isClickedContext";
 import { useContext, useRef, useEffect, useState } from "react";
 import MySkils from "./mySkils";
@@ -14,14 +8,9 @@ import MySkils from "./mySkils";
 function Introduce() {
   const clicked = useContext(IsClickContext);
   const introduce = useRef<HTMLDivElement>(null);
-  const mySkillsRef = useRef<HTMLDivElement>(null);
-  const [length, setLength] = useState(0);
   const [width, setWidth] = useState<number>(0);
 
   const isView = useInView(introduce);
-  const { scrollY } = useScroll({
-    target: introduce,
-  });
 
   useEffect(() => {
     const update = () => {
@@ -33,14 +22,6 @@ function Introduce() {
 
     return () => window.addEventListener("resize", update);
   }, []);
-  useEffect(() => {
-    if (introduce.current && mySkillsRef.current) {
-      const introduceRect = introduce.current.getBoundingClientRect();
-      const mySkillsRect = mySkillsRef.current.getBoundingClientRect();
-      const totalLength = mySkillsRect.bottom - introduceRect.top;
-      setLength(totalLength);
-    }
-  }, [isView]);
 
   const description: string[] = [
     "안녕하세요.",
@@ -65,16 +46,11 @@ function Introduce() {
     },
   };
 
-  const yPos = useTransform(scrollY, [0, length - 800], [0, length - 800]);
-  const springY = useSpring(yPos, { stiffness: 100, damping: 20 });
-
   return (
     <>
       <div ref={introduce} className={style.body}>
         <div className={style.introduce}>
-          <motion.img
-            style={width >= 758 ? { y: springY } : undefined}
-            transition={{ type: "spring" }}
+          <img
             className={style.profileImg}
             src={`${process.env.PUBLIC_URL}/image/profile.jpg`}
           />
@@ -98,11 +74,10 @@ function Introduce() {
               </p>
             ))}
           </div>
+          <div></div>
+          <MySkils />
         </div>
         {width >= 758 && <IntroduceTitle />}
-      </div>
-      <div ref={mySkillsRef}>
-        <MySkils />
       </div>
     </>
   );

@@ -1,19 +1,18 @@
-/* style/Footer.module.css */
+/* style/Footer.css */
 .footerContainer {
   position: relative;
-  min-height: 800px;
+  height: 800px;
   clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0 100%);
 }
 
-.contactWrapper {
-  position: fixed;
-  bottom: 0;
-  height: 800px;
-  width: 100%;
+.footerWrapper {
+  position: relative;
+  height: calc(100vh + 800px);
+  top: -100vh;
 }
 
-@media (max-width: 768px) {
-  .contactWrapper {
-    height: 650px;
-  }
+.footerContent {
+  height: 800px;
+  position: sticky;
+  top: calc(100vh - 800px);
 }

@@ -8,7 +8,7 @@
   justify-content: center;
   height: 100%;
   border-top: 1px solid #ced4da;
-  background-color: #111111;
+  background-color: #17171a;
   overflow-x: hidden;
 }
 
@@ -17,7 +17,7 @@
   font-size: 4.25em;
   font-weight: bold;
   text-align: center;
-  color: #ffffff;
+  color: #f7f7f7;
   margin-bottom: 2em;
 }
 
@@ -26,7 +26,7 @@
   flex-direction: column;
   width: 60%;
   height: 60%;
-  color: #ffffff;
+  color: #f7f7f7;
   /* background-color: red; */
 }
 
@@ -46,6 +46,7 @@
   font-family: "Jua", sans-serif;
   font-size: 1.875em;
   width: 11.875em;
+  background-color: #f7f7f7;
 }
 
 .text {
@@ -64,11 +65,11 @@
 .btn {
   background: none;
   font-size: 1.25em;
-  border: 2px solid #ffffff;
+  border: 2px solid #f7f7f7;
   width: 6.25em;
   height: 3.125em;
   border-radius: 3em;
-  color: #ffffff;
+  color: #f7f7f7;
   font-family: "Jua", sans-serif;
 
   cursor: pointer;
